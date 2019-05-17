@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { CatalogBook } from './CatalogBook';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,14 +7,22 @@ import { Observable } from 'rxjs';
 })
 export class LeaseService {
 
-    baseApi = "localhost:8080/leases/new";
+    baseApi = "http://localhost:8080/leases";
+
+    httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+        })
+    };
 
     constructor(private http: HttpClient) { }
 
-    makeLease(id:number) : Observable<CatalogBook> {
-        return this.http.post<CatalogBook>(this.baseApi, id);
-    }
+    // makeLease(id: number) {
+    //     console.log("[LeaseService] makeLease()");
+    //     this.http.post<number>(`${this.baseApi}/new`, id, this.httpOptions);
+    // }
 
- 
-
+    makeLeaseT(id: number): Observable<Object> {
+        return this.http.post<Object>(`${this.baseApi}/new`, {"id":id}, this.httpOptions);
+    };
 }
