@@ -15,5 +15,8 @@ export class CatalogService {
     getCatalogBooks(): Observable<CatalogBook[]> {
         return this.http.get<CatalogBook[]>(this.baseApi);
     }
+    getCatalogBookById(id:number):Observable<CatalogBook>{
+        return this.http.get<CatalogBook>(`${this.baseApi}/${id}`)
+    }
 
 }
