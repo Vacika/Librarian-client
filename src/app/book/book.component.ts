@@ -27,8 +27,9 @@ export class BookComponent implements OnInit {
 
     makeLease() {
         // console.log(this.bookId);
-        this.leaseService.makeLeaseT(this.bookId).subscribe(
-            data => console.log(data)
+        this.leaseService.makeLease(this.bookId).subscribe(
+            data => console.log(data),
+            error => console.log("Book is not available")
         );
     }
 
