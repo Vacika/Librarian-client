@@ -1,3 +1,19 @@
-<p>
-  search works!
-</p>
+<div id='container'>
+  
+  <div id='search'>
+    <input type='text' [formControl]='searchInput'>
+    <button type='button'>Search</button>
+  </div>
+
+  <div id='book-list-container' *ngIf='catalogBooks'>
+    <ul>
+      <li *ngFor='let book of catalogBooks'>
+        <div routerLink='/book/{{book.id}}'>
+          <div id='media-right'>
+              <span id='show-name'>{{book.title}} </span>
+            </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -11,7 +11,7 @@ import { CatalogService } from '../catalog.service';
     styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-    cb: CatalogBook[] = null;
+    catalogBooks: CatalogBook[] = null;
     searchInput = new FormControl();
     constructor(private catalogService: CatalogService) { }
 
@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
             switchMap(term => {
                 return this.catalogService.searchBooks(term);
             }))
-            .subscribe(book => this.cb = book,
+            .subscribe(book => this.catalogBooks = book,
                 error => console.error("Something failed while fetching... Error details:", error));
     }
 
