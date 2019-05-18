@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BookComponent } from './book/book.component';
 import { ListBooksComponent } from './list-books/list-books.component';
+import { LeasesListComponent } from './leases-list/leases-list.component';
+import { SearchComponent } from './search/search.component';
 
 const appRoutes: Routes = [
   { path: 'book/:id', component: BookComponent},
@@ -20,7 +22,9 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     BookComponent,
-    ListBooksComponent
+    ListBooksComponent,
+    LeasesListComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
