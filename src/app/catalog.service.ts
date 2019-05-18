@@ -13,7 +13,7 @@ export class CatalogService {
     constructor(private http: HttpClient) { }
 
     searchBooks(term:string):Observable<CatalogBook[]>{
-        return this.http.get<CatalogBook[]>(`${this.baseApi}/search/book?q=${term}`);
+        return this.http.get<CatalogBook[]>(`${this.baseApi}/search/book?title=${term}`);
     }
     getCatalogBooks(): Observable<CatalogBook[]> {
         return this.http.get<CatalogBook[]>(this.baseApi);

@@ -16,6 +16,12 @@ export class SearchComponent implements OnInit {
     constructor(private catalogService: CatalogService) { }
 
     ngOnInit() {
+        this.catalogService.getCatalogBooks().subscribe({
+            next: books => {
+                this.catalogBooks = books;
+                console.log(this.catalogBooks);
+            }
+        })
         this.searchInput.valueChanges.pipe(
             debounceTime(500),
             distinctUntilChanged(),
