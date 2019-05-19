@@ -1,21 +1,16 @@
 <!-- <p>{{book.title}}</p> -->
-<div *ngIf="book">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <!-- <div mat-card-avatar class="example-header-image"></div> -->
-      <mat-card-title>{{book.title}}</mat-card-title>
-      <mat-card-subtitle>{{book.author.name}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="{{book.cover}}" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      <p>
-        {{book.summary}}
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button (click)="makeLease()">LEASE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card>
+<div *ngIf="book" class="container">
+  <div class='media-left'>
+    <img mat-card-image src="{{book.cover}}" >
+  </div>
+  <div class='media-right'>
+    <h2>{{book.title}}</h2>
+    <b>Author:</b> <span class="graycolor"> {{book.author.name}}</span>
+    <p>
+      {{book.summary}}
+    </p>
+    <button mat-button (click)="makeLease()">LEASE</button>
+    <button mat-button>SHARE</button>
+  </div>
 </div>
 <!-- <button (click)="makeLease()"> Lease this book! </button> -->
