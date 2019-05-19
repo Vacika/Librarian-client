@@ -17,7 +17,7 @@ import { BookSnippetListComponent } from './book-snippet-list/book-snippet-list.
 const appRoutes: Routes = [
     { path: 'book/:id', component: BookComponent },
     //   { path: 'home', component: SearchComponent },
-    { path: 'home', component: HomeComponent },
+    { path: 'home', component: SearchComponent },
 
     {
         path: '',

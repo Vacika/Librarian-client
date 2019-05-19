@@ -1,4 +1,3 @@
-<div id='book-list-container' *ngIf='catalogBooks'>
-  <app-book-snippet *ngFor="let b of catalogBooks" [book]="b"
-        routerLink="/book/{{b.id}}"></app-book-snippet>
+<div>
+  <app-book-snippet *ngFor="let b of books" [book]="b" routerLink="/book/{{b.id}}"></app-book-snippet>
 </div>

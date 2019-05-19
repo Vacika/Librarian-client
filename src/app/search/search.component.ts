@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { CatalogBook } from '../CatalogBook';
-import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators'
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
 import { FormControl } from '@angular/forms';
 import { CatalogService } from '../catalog.service';
 
@@ -10,7 +10,7 @@ import { CatalogService } from '../catalog.service';
     styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-    catalogBooks: CatalogBook[] = null;
+    catalogBooks: CatalogBook[];
     searchInput = new FormControl();
     constructor(private catalogService: CatalogService) { }
 
@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
         this.catalogService.getCatalogBooks().subscribe({
             next: books => {
                 this.catalogBooks = books;
-                console.log(this.catalogBooks);
+                // console.log(this.catalogBooks);
             }
         });
         this.searchInput.valueChanges.pipe(

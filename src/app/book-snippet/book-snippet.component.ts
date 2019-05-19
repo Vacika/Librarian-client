@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CatalogBook } from '../CatalogBook';
 
 @Component({
-  selector: 'app-book-snippet',
-  templateUrl: './book-snippet.component.html',
-  styleUrls: ['./book-snippet.component.css']
+    selector: 'app-book-snippet',
+    templateUrl: './book-snippet.component.html',
+    styleUrls: ['./book-snippet.component.css']
 })
 export class BookSnippetComponent implements OnInit {
 
-  constructor() { }
+    @Input() book: CatalogBook;
 
-  ngOnInit() {
-  }
+    constructor() { }
+
+    ngOnInit() {
+        console.log(this.book);
+    }
 
 }

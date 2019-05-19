@@ -1,6 +1,7 @@
 <div id='container'>
 
-  <mat-progress-bar *ngIf="!catalogBooks" mode="indeterminate" color="warn"></mat-progress-bar>
+  <mat-progress-bar *ngIf="!catalogBooks" mode="indeterminate" color="warn">
+  </mat-progress-bar>
 
   <form class="example-form">
     <mat-form-field class="example-full-width">
@@ -8,6 +9,6 @@
     </mat-form-field>
   </form>
 
-  <app-book-snippet-list></app-book-snippet-list>
+  <app-book-snippet-list [books]="catalogBooks"></app-book-snippet-list>
 
 </div>
