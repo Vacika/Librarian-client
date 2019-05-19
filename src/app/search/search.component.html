@@ -12,8 +12,8 @@
 
     <div class="search-results-container" *ngIf="catalogBooks && term != '' && term !== undefined">
       <ul>
-        <li *ngFor="let book of catalogBooks"><a routerLink="/book/{{book.id}}">{{book.title}}</a> <span
-            class="book-author"> by {{book.author.name}}</span></li>
+        <li *ngFor="let book of catalogBooks"><a routerLink="/book/{{book.id}}">{{book.title}} <span
+          class="book-author"> by {{book.author.name}}</span></a> </li>
       </ul>
     </div>
   </div>

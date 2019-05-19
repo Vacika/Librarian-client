@@ -5,10 +5,13 @@
 
 .search-container {
   flex-direction: column;
-  background-color: #aaa;
+  /* background-color: #aaa; */
   align-items: center;
   align-self: center;
-  padding: 100px 0px 100px 0px;
+  width:100%;
+  min-width: 150px;
+  max-width: 500px;
+  padding: 50px 0px 50px 0px;
 }
 
 .example-form {
@@ -37,6 +40,7 @@
 }
 ul{
   padding-left:0px;
+  margin-top:2px;
 }
 
 ul li {
