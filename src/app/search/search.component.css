@@ -65,14 +65,13 @@ ul li:hover {
 
 .badge {
   width: 50px;
-  height: 100px;
+  height: 80px;
 }
 
 .badge img {
   margin: auto;
-  padding: auto;
   width: 50px;
-  height: 100px;
+  height: 80px;
 }
 
 .book-text {
