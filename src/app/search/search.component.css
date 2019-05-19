@@ -1,6 +1,7 @@
 #container {
   display: flex;
   flex-direction:column;
+  padding-top: 50px;
 }
 
 .example-form {
@@ -8,6 +9,7 @@
   max-width: 500px;
   width: 100%;
   align-self:center;
+  padding-bottom: 50px;
 }
 
 .example-full-width {
