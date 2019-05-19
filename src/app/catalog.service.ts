@@ -23,5 +23,8 @@ export class CatalogService {
     getCatalogBookById(id:number):Observable<CatalogBook>{
         return this.http.get<CatalogBook>(`${this.baseApi}/${id}`)
     }
+    getPopularCatalogBooks():Observable<CatalogBook[]>{
+        return this.http.get<CatalogBook[]>(`${this.baseApi}/popular`);
+    }
 
 }

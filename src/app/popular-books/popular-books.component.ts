@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CatalogBook } from '../CatalogBook';
+import { CatalogService } from '../catalog.service';
 
 @Component({
   selector: 'app-popular-books',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./popular-books.component.css']
 })
 export class PopularBooksComponent implements OnInit {
-
-  constructor() { }
+  popularBooks:CatalogBook[];
+  constructor(private service:CatalogService) { }
 
   ngOnInit() {
+      this.service.getPopularCatalogBooks().subscribe(
+          books=>{
+              this.popularBooks=books
+          },
+          error=>console.error("Failed fetching popular books from the api, error data:",error)
+      )
   }
 
 }

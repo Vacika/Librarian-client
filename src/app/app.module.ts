@@ -13,18 +13,19 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { BookSnippetComponent } from './book-snippet/book-snippet.component';
 import { BookSnippetListComponent } from './book-snippet-list/book-snippet-list.component';
+import { PopularBooksComponent } from './popular-books/popular-books.component';
 
 const appRoutes: Routes = [
     { path: 'book/:id', component: BookComponent },
     //   { path: 'home', component: SearchComponent },
-    { path: 'home', component: SearchComponent },
+    { path: 'home', component: HomeComponent },
 
     {
         path: '',
         redirectTo: '/home',
         pathMatch: 'full'
     },
-    { path: '**', component: SearchComponent }
+    { path: '**', component: HomeComponent }
 ];
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
         HomeComponent,
         BookSnippetComponent,
         BookSnippetListComponent,
+        PopularBooksComponent,
     ],
     imports: [
         FormsModule,
