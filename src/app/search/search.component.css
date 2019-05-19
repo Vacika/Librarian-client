@@ -56,7 +56,8 @@ ul li {
 }
 
 ul li:hover {
-  background: lightgray;
+  background:lightblue;
+  cursor: pointer;
 }
 
 .book-author {
