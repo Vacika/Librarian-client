@@ -15,9 +15,11 @@ export class CatalogService {
     searchBooks(term:string):Observable<CatalogBook[]>{
         return this.http.get<CatalogBook[]>(`${this.baseApi}/search/book?title=${term}`);
     }
+
     getCatalogBooks(): Observable<CatalogBook[]> {
         return this.http.get<CatalogBook[]>(this.baseApi);
     }
+
     getCatalogBookById(id:number):Observable<CatalogBook>{
         return this.http.get<CatalogBook>(`${this.baseApi}/${id}`)
     }

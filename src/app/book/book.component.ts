@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { LeaseService } from "../lease.service";
 import { CatalogService } from '../catalog.service';
@@ -10,7 +10,8 @@ import { CatalogBook } from '../CatalogBook';
 })
 export class BookComponent implements OnInit {
     bookId: number;
-    book: CatalogBook;
+    @Input() book: CatalogBook;
+    // @Input() willRouteTo: RouterLink;
 
     constructor(private route: ActivatedRoute,
         private leaseService: LeaseService,

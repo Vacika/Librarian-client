@@ -4,7 +4,6 @@ import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operato
 import { FormControl } from '@angular/forms';
 import { CatalogService } from '../catalog.service';
 
-
 @Component({
     selector: 'app-search',
     templateUrl: './search.component.html',
@@ -21,7 +20,7 @@ export class SearchComponent implements OnInit {
                 this.catalogBooks = books;
                 console.log(this.catalogBooks);
             }
-        })
+        });
         this.searchInput.valueChanges.pipe(
             debounceTime(500),
             distinctUntilChanged(),
