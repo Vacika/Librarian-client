@@ -3,6 +3,11 @@
   margin: 0px 20px 0px 20px;
 }
 
+img {
+  height: 300px;
+  max-height: 300px;
+}
+
 .example-title {
   display: inline-block;
   width: 180px;

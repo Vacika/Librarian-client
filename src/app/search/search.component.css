@@ -1,15 +1,14 @@
 #container {
   display: flex;
-  flex-direction:column;
-  padding-top: 50px;
+  flex-direction: column;
 }
 
 .example-form {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
-  align-self:center;
-  padding-bottom: 50px;
+  align-self: center;
+  margin: 80px 0px 80px 0px;
 }
 
 .example-full-width {
