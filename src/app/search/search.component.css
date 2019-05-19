@@ -6,17 +6,16 @@
 .search-container {
   flex-direction: column;
   /* background-color: #aaa; */
-  align-items: center;
   align-self: center;
   width: 100%;
   min-width: 150px;
-  max-width: 500px;
+  max-width: 504px;
   padding: 80px 0px 80px 0px;
 }
 
 .example-form {
   min-width: 150px;
-  max-width: 500px;
+  max-width: 504px;
   width: 100%;
   align-self: center;
 }
@@ -26,14 +25,15 @@
 }
 
 .search-results-container {
-  margin-top: -19px;
+  margin-top: -21px;
   min-width: 150px;
-  max-width: 500px;
-  width: 100%;
+  max-width: 504px;
+  width: 504px;
   align-self: center;
-  margin-bottom: 50px;
-  background-color: white;
-  border: 1px solid rgb(67, 67, 196);
+  background-color: rgba(0, 0, 0, 0.8);
+  /* margin-bottom: 50px; */
+  /* border: 1px solid #3f51b5; */
+  /* border: 1px solid lightgrey; */
   position: absolute;
   z-index: 1000000;
   border-top: 0px;
@@ -41,22 +41,25 @@
 
 ul {
   padding-left: 0px;
-  margin-top: 2px;
+  margin-top: 0px;
   display: flex;
   flex-direction: column;
 }
 
 ul li {
   list-style-type: none;
-  color: black;
+  color: white;
   width: 100%;
   margin: 0px;
   padding: 0px;
   display: flex;
+  align-items: center;
 }
 
 ul li:hover {
-  background: lightgray;
+  background: #E91E63;
+  /* background: lightgrey; */
+  cursor: default;
 }
 
 .book-author {
@@ -65,18 +68,18 @@ ul li:hover {
 
 .badge {
   width: 50px;
-  height: 100px;
+  height: 70px;
 }
 
 .badge img {
   margin: auto;
   padding: auto;
   width: 50px;
-  height: 100px;
+  height: 70px;
 }
 
 .book-text {
   text-align: center;
   align-self: center;
-  padding-left: 6px;
+  padding-left: 25px;
 }

@@ -13,14 +13,14 @@
     <div class="search-results-container" *ngIf="catalogBooks && term != '' && term !== undefined">
       <ul>
         <li *ngFor="let book of catalogBooks" routerLink="/book/{{book.id}}">
-            <div class="badge">
-              <img mat-card-image src="{{book.cover}}">
-            </div>
-            <div class="book-text">
-              {{book.title}}
-              <span class="book-author">
-               by {{book.author.name}}
-              </span>
+          <div class="badge">
+            <img mat-card-image src="{{book.cover}}">
+          </div>
+          <div class="book-text">
+            {{book.title}}
+            <span class="book-author">
+              by {{book.author.name}}
+            </span>
           </div>
         </li>
       </ul>
