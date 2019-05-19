@@ -3,16 +3,21 @@
   <mat-progress-bar *ngIf="!catalogBooks" mode="indeterminate" color="accent">
   </mat-progress-bar>
 
-  <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Search book by title" [formControl]="searchInput" class="search-input">
-    </mat-form-field>
-  </form>
-  <div class="search-results-container" *ngIf="catalogBooks && term != '' && term !== undefined">
-    <ul>
-      <li *ngFor="let book of catalogBooks"><a routerLink="/book/{{book.id}}">{{book.title}}</a>  <span class="book-author">   by {{book.author.name}}</span></li>
-    </ul>
+  <div class="search-container">
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Search book by title" [formControl]="searchInput" class="search-input">
+      </mat-form-field>
+    </form>
+
+    <div class="search-results-container" *ngIf="catalogBooks && term != '' && term !== undefined">
+      <ul>
+        <li *ngFor="let book of catalogBooks"><a routerLink="/book/{{book.id}}">{{book.title}}</a> <span
+            class="book-author"> by {{book.author.name}}</span></li>
+      </ul>
+    </div>
   </div>
+
   <app-book-snippet-list [books]="catalogBooks"></app-book-snippet-list>
 
 </div>
