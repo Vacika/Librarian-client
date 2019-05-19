@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CatalogBook } from '../CatalogBook';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
 import { FormControl } from '@angular/forms';
