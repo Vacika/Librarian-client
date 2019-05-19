@@ -35,7 +35,7 @@ const appRoutes: Routes = [
         NavigationComponent,
         HomeComponent,
         BookSnippetComponent,
-        BookSnippetListComponent
+        BookSnippetListComponent,
     ],
     imports: [
         FormsModule,

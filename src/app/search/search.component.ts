@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CatalogBook } from '../CatalogBook';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
+import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators'
 import { FormControl } from '@angular/forms';
 import { CatalogService } from '../catalog.service';
 
@@ -12,6 +12,7 @@ import { CatalogService } from '../catalog.service';
 export class SearchComponent implements OnInit {
     catalogBooks: CatalogBook[];
     searchInput = new FormControl();
+    term:string;
     constructor(private catalogService: CatalogService) { }
 
     ngOnInit() {
@@ -24,11 +25,15 @@ export class SearchComponent implements OnInit {
         this.searchInput.valueChanges.pipe(
             debounceTime(500),
             distinctUntilChanged(),
+            tap(x=>this.term=x),
             switchMap(term => {
+                console.log(this.term);
                 return this.catalogService.searchBooks(term);
             }))
             .subscribe(book => this.catalogBooks = book,
                 error => console.error("Something failed while fetching... Error details:", error));
+
+
     }
 
 }
