@@ -1,11 +1,13 @@
-#book-list-container {
+#container {
   display: flex;
+  flex-direction:column;
 }
 
 .example-form {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
+  align-self:center;
 }
 
 .example-full-width {
