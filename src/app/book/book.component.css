@@ -1,9 +1,15 @@
-.example-card {
-  max-width: 400px;
-  margin-bottom: 20px;
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px 40px 40px 40px;
 }
 
-.example-header-image {
+.example-card {
+  max-width: 400px;
+}
+
+/* .example-header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
-}
+} */
