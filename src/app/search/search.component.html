@@ -8,14 +8,6 @@
     </mat-form-field>
   </form>
 
-  <!-- <div class="search-container">
-    <mat-form-field>
-      <input matInput placeholder="Title" [formControl]="searchInput">
-    </mat-form-field>
-  </div> -->
-
-  <div id='book-list-container' *ngIf='catalogBooks'>
-    <app-book *ngFor="let b of catalogBooks" [book]="b" routerLink="/book/{{b.id}}"></app-book>
-  </div>
+  <app-book-snippet-list></app-book-snippet-list>
 
 </div>
