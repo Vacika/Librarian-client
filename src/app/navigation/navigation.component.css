@@ -4,9 +4,6 @@
 }
 
 span {
-  margin-right: 1rem;
-}
-
-span:hover {
-  color: #e91e63;
+  padding-top: 2px;
+  padding-left: 6px;
 }

@@ -1,3 +1,9 @@
+.object-fit_fill { object-fit: fill }
+.object-fit_contain { object-fit: contain }
+.object-fit_cover { object-fit: cover }
+.object-fit_none { object-fit: none }
+.object-fit_scale-down { object-fit: scale-down }
+
 .example-card {
   max-width: 200px;
   margin: 0px 20px 0px 20px;
@@ -5,7 +11,6 @@
 
 img {
   height: 300px;
-  max-height: 300px;
 }
 
 .example-title {
@@ -15,8 +20,8 @@ img {
   overflow: hidden !important;
   text-overflow: ellipsis;
 }
-
+/*
 .example-header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
-}
+} */

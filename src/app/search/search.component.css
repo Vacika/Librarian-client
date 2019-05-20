@@ -9,13 +9,13 @@
   align-self: center;
   width: 100%;
   min-width: 150px;
-  max-width: 504px;
+  max-width: 524px;
   padding: 80px 0px 80px 0px;
 }
 
 .example-form {
   min-width: 150px;
-  max-width: 504px;
+  max-width: 524px;
   width: 100%;
   align-self: center;
 }
@@ -27,8 +27,8 @@
 .search-results-container {
   margin-top: -21px;
   min-width: 150px;
-  max-width: 504px;
-  width: 504px;
+  max-width: 524px;
+  width: 524px;
   align-self: center;
   background-color: rgba(0, 0, 0, 0.8);
   /* margin-bottom: 50px; */
@@ -37,6 +37,8 @@
   position: absolute;
   z-index: 1000000;
   border-top: 0px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 ul {
@@ -54,12 +56,21 @@ ul li {
   padding: 0px;
   display: flex;
   align-items: center;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
 }
 
 ul li:hover {
-  background: #E91E63;
-  /* background: lightgrey; */
+  /* background: #E91E63; */
+  /* background: #3f51b5; */
+  background: #ff4081;
+  /* background: lightsteelblue; */
   cursor: default;
+}
+
+ul li:last-child {
+  margin-bottom: -16px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 .book-author {
@@ -67,19 +78,20 @@ ul li:hover {
 }
 
 .badge {
-  width: 50px;
-  height: 70px;
+  width: 35px;
+  height: 50px;
+  padding: 5px 5px 5px 5px;
 }
 
 .badge img {
   margin: auto;
   padding: auto;
-  width: 50px;
-  height: 70px;
+  width: 35px;
+  height: 50px;
 }
 
 .book-text {
   text-align: center;
   align-self: center;
-  padding-left: 25px;
+  padding-left: 20px;
 }
