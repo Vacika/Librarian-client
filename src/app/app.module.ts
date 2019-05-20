@@ -14,11 +14,14 @@ import { HomeComponent } from './home/home.component';
 import { BookSnippetComponent } from './book-snippet/book-snippet.component';
 import { BookSnippetListComponent } from './book-snippet-list/book-snippet-list.component';
 import { PopularBooksComponent } from './popular-books/popular-books.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 const appRoutes: Routes = [
     { path: 'book/:id', component: BookComponent },
     //   { path: 'home', component: SearchComponent },
     { path: 'home', component: HomeComponent },
+    { path: 'adminpanel', component: AdminPanelComponent },
+
 
     {
         path: '',
@@ -38,6 +41,7 @@ const appRoutes: Routes = [
         BookSnippetComponent,
         BookSnippetListComponent,
         PopularBooksComponent,
+        AdminPanelComponent,
     ],
     imports: [
         FormsModule,
