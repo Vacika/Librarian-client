@@ -1,7 +1,18 @@
 table{
   border:2px solid darkgray;
-
+  border-left:0px;
+  border-right:0px;
+  width:100%;
+  padding:0px 20px 0px 20px;
 }
 table tbody tr{
   border:2px solid gray;
+}
+
+thead{
+  background:#ff4081;
+  color:white;
+}
+.green{
+  background-color: green;
 }

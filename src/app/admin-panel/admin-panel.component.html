@@ -13,13 +13,13 @@
 
     </thead>
     <tbody>
-      <tr *ngFor="let l of leases">
+      <tr *ngFor="let l of leases" [ngClass]="{'green': l.returned}">
         <td>{{l.id}}</td>
         <td>{{l.user.username}}</td>
         <td>{{l.timeOfLease}}</td>
         <td>{{l.dueTime}}</td>
         <td>{{l.inventoryBook.catalogBook.title}}</td>
-        <td>{{l.returned}}</td>
+        <td >{{l.returned}}</td>
 
       </tr>
     </tbody>
