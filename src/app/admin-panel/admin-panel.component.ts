@@ -9,10 +9,17 @@ import { LeaseService } from '../lease.service';
 })
 export class AdminPanelComponent implements OnInit {
   leases:Lease[];
-  constructor(private service:LeaseService) { }
+  currentDate:Date;
+  constructor(private service:LeaseService) {
+      this.currentDate=new Date();
+   }
 
   ngOnInit() {
       this.service.getAllLeases().subscribe(l=>this.leases=l)
+
+  }
+  isExpired(l:Lease):boolean{
+      return this.currentDate.getTime() > Date.parse(l.due_time);
   }
 
 }

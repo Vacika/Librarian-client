@@ -13,15 +13,17 @@
 
     </thead>
     <tbody>
-      <tr *ngFor="let l of leases" [ngClass]="{'green': l.returned}">
+      <tr *ngFor="let l of leases" [ngClass]="{'green': l.returned,'yellow':!l.returned,'red': isExpired(l)}">
         <td>{{l.id}}</td>
-        <td>{{l.user.username}}</td>
+        <!-- <td>{{l.user.username}}</td> -->
+        <td></td>
         <td>{{l.timeOfLease}}</td>
-        <td>{{l.dueTime}}</td>
+        <td>{{l.due_time}}</td>
         <td>{{l.inventoryBook.catalogBook.title}}</td>
         <td >{{l.returned}}</td>
 
       </tr>
     </tbody>
   </table>
+Today date is: {{currentDate | date:'dd/MM/yyyy HH:mm:ss'}}
 </div>
