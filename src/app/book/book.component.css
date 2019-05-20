@@ -19,7 +19,6 @@
   margin-right:50px;
   display:flex;
   flex-direction:column;
-  margin-top:89px;
 }
 button{
   background-color: #ff4081;
@@ -29,7 +28,10 @@ button{
 h2 {
   margin-top: 5px;
 }
-
+.media-right h6{
+  color:darkgray;
+  text-align:center;
+}
 .graycolor {
   color: #515151;
 }
@@ -47,12 +49,13 @@ img:hover {
 .similar-books{
   display:flex;
   flex-direction: column;
+  text-align: center;
 }
 .object-fit_scale-down { object-fit: scale-down }
 
 .example-card {
   max-width: 200px;
-  margin: 0px 20px 0px 20px;
+  margin: 0px 20px 5px 20px;
   cursor:pointer;
 }
 
@@ -66,4 +69,7 @@ img:hover {
 }
 .mat-card-image{
   width:250px;
+}
+.similar-book-img{
+  width:50px;
 }
