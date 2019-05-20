@@ -7,16 +7,17 @@
 
   <div class='media-center'>
     <h2>{{book.title}}</h2>
-    <b>Author:</b> <span class="graycolor"> {{book.author.name}}</span>
+    <div><b>Author:</b> <span class="graycolor"> {{book.author.name}}</span></div>
     <p>
       {{book.summary}}
     </p>
-
+    <div class='buttons'>
+      <button mat-button (click)="makeLease()">LEASE</button>
+      <button mat-button>SHARE</button></div>
   </div>
 
   <div class='media-right'>
-    <button mat-button (click)="makeLease()">LEASE</button>
-    <button mat-button>SHARE</button>
+
     <div class='similar-books' *ngIf='similarBooks' >
       <mat-card class="example-card object-fit_scale-down" *ngFor="let b of similarBooks">
         <mat-card-header>
