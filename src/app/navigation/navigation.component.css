@@ -1,7 +1,9 @@
 .navbar {
   justify-content: space-between;
+  cursor: default;
 }
 
 span {
-  padding-right: 1rem;
+  padding-top: 2px;
+  padding-left: 6px;
 }

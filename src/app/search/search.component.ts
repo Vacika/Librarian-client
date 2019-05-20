@@ -12,7 +12,8 @@ import { CatalogService } from '../catalog.service';
 export class SearchComponent implements OnInit {
     catalogBooks: CatalogBook[];
     searchInput = new FormControl();
-    term:string;
+    term: string;
+
     constructor(private catalogService: CatalogService) { }
 
     ngOnInit() {
@@ -25,7 +26,7 @@ export class SearchComponent implements OnInit {
         this.searchInput.valueChanges.pipe(
             debounceTime(500),
             distinctUntilChanged(),
-            tap(x=>this.term=x),
+            tap(x => this.term = x),
             switchMap(term => {
                 console.log(this.term);
                 return this.catalogService.searchBooks(term);
