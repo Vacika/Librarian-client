@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
     catalogBooks: CatalogBook[];
     searchInput = new FormControl();
     term: string;
+    searchFailed:boolean=false;
 
     constructor(private catalogService: CatalogService) { }
 
@@ -20,8 +21,7 @@ export class SearchComponent implements OnInit {
         this.catalogService.getCatalogBooks().subscribe({
             next: books => {
                 this.catalogBooks = books;
-                // console.log(this.catalogBooks);
-            }
+            },
         });
         this.searchInput.valueChanges.pipe(
             debounceTime(500),
@@ -31,8 +31,12 @@ export class SearchComponent implements OnInit {
                 console.log(this.term);
                 return this.catalogService.searchBooks(term);
             }))
-            .subscribe(book => this.catalogBooks = book,
-                error => console.error("Something failed while fetching... Error details:", error));
+            .subscribe(
+                book => this.catalogBooks = book,
+                error => {
+                    this.searchFailed=true,
+                    console.error("Something failed while fetching... Error details:", error)}
+                );
 
 
     }
