@@ -10,8 +10,8 @@ import { CatalogBook } from '../CatalogBook';
 })
 export class BookComponent implements OnInit {
     bookId: number;
-    @Input() book: CatalogBook;
-    // @Input() willRouteTo: RouterLink;
+    book: CatalogBook;
+    similarBooks:CatalogBook[];
 
     constructor(private route: ActivatedRoute,
         private leaseService: LeaseService,
@@ -23,11 +23,13 @@ export class BookComponent implements OnInit {
         this.catalogService.getCatalogBookById(this.bookId).subscribe(
             book => this.book = book
         );
-        // console.log(this.book.title)
-    }
+        this.catalogService.getSimilarBooks(this.bookId)
+        .subscribe(
+            books=>this.similarBooks=books
+            );
+        }
 
     makeLease() {
-        // console.log(this.bookId);
         this.leaseService.makeLease(this.bookId).subscribe(
             data => console.log(data),
             error => console.log("Book is not available")

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CatalogService {
 
+
     baseApi = 'http://localhost:8080/catalog_books';
 
     constructor(private http: HttpClient) { }
@@ -25,6 +26,9 @@ export class CatalogService {
     }
     getPopularCatalogBooks():Observable<CatalogBook[]>{
         return this.http.get<CatalogBook[]>(`${this.baseApi}/popular`);
+    }
+    getSimilarBooks(genreId: number):Observable<CatalogBook[]> {
+        return this.http.get<CatalogBook[]>(`${this.baseApi}/similar/${genreId}`);
     }
 
 }

@@ -1,20 +1,25 @@
 .container {
   display: flex;
   flex-direction: row;
-  padding: 40px 200px 40px 200px;
+  padding: 40px 150px 40px 150px;
 }
 
-.media-right {
-  border: 2px solid darkgray;
-  border-radius: 2%;
+.media-center {
   padding-left: 35px;
-  border-left: 0px;
-  background-color: rgba(190, 170, 170, 0.932);
+
+}
+.media-right{
+  margin-left:50px;
+  margin-right:50px;
+  display:flex;
+  flex-direction:column;
+  margin-top:89px;
 }
 button{
   background-color: #3f51b5;
   color:white;
-  margin-right:20px;
+  padding:0px 80px 0px 80px;
+  margin-bottom:30px;
 }
 h2 {
   margin-top: 5px;
@@ -26,18 +31,31 @@ h2 {
 
 img {
   border: 1px solid #ddd;
-  /* Gray border */
   border-radius: 4px;
-  /* Rounded border */
   padding: 5px;
-  /* Some padding */
 }
 
 img:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 
-/* .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-} */
+.similar-books{
+  display:flex;
+  flex-direction: column;
+}
+.object-fit_scale-down { object-fit: scale-down }
+
+.example-card {
+  max-width: 200px;
+  margin: 0px 20px 0px 20px;
+  cursor:pointer;
+}
+
+
+.example-title {
+  display: inline-block;
+  width: 180px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
