@@ -1,0 +1,7 @@
+table{
+  border:2px solid darkgray;
+
+}
+table tbody tr{
+  border:2px solid gray;
+}

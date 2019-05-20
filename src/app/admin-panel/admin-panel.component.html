@@ -1,3 +1,27 @@
-<p>
-  admin-panel works!
-</p>
+<div>
+  <h3>Leases</h3>
+</div>
+<div class='leases-container'>
+  <table>
+    <thead>
+      <th>Lease ID</th>
+      <th>User</th>
+      <th>Time of lease</th>
+      <th>Due time</th>
+      <th>Book Leased</th>
+      <th>Returned?</th>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let l of leases">
+        <td>{{l.id}}</td>
+        <td>{{l.user.username}}</td>
+        <td>{{l.timeOfLease}}</td>
+        <td>{{l.dueTime}}</td>
+        <td>{{l.inventoryBook.catalogBook.title}}</td>
+        <td>{{l.returned}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

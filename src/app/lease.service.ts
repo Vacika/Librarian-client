@@ -21,4 +21,7 @@ export class LeaseService {
     makeLease(id: number): Observable<Lease> {
         return this.http.post<Lease>(`${this.baseApi}/new`, { "id": id });
     };
+    getAllLeases():Observable<Lease[]>{
+        return this.http.get<Lease[]>(`${this.baseApi}/all`);
+    }
 }
