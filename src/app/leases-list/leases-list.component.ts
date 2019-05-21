@@ -11,22 +11,27 @@ import { debounceTime, distinctUntilChanged, tap, switchMap } from 'rxjs/operato
 })
 export class LeasesListComponent implements OnInit {
     leases: Lease[];
+    allLeases: Lease[];
     currentDate = new Date();
     searchInput = new FormControl();
     term: string;
     searchFailed = false;
     leasesFetchFailed = false;
-    displayedColumns: string[] = ['id', 'timeOfLease','due_time','inventoryBook','returned'];
+    displayedColumns: string[] = ['id', 'timeOfLease', 'due_time', 'inventoryBook', 'returned'];
     constructor(private service: LeaseService) { }
 
     ngOnInit() {
         this.service.getAllLeases().subscribe(
-            l => this.leases = l,
+            l => {
+                this.allLeases = l
+            },
             error => {
                 this.leasesFetchFailed = true
                 console.error("Error happened while fetching all leases, data:", error)
             }
         )
+
+
         this.searchInput.valueChanges.pipe(
             debounceTime(500),
             distinctUntilChanged(),
@@ -45,8 +50,8 @@ export class LeasesListComponent implements OnInit {
     isExpired(dueTime: string): boolean {
         return this.currentDate.getTime() > Date.parse(dueTime);
     }
-    onLeaseClicked(id: number) {
-        this.service.searchLeasesByUsername(id).subscribe(
+    onLeaseClicked(username: string) {
+        this.service.searchLeasesByUsername(username).subscribe(
             list => this.leases = list,
             error => console.error("Error:", error)
         )
