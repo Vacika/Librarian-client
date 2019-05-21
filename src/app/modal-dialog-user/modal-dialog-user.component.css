@@ -1,4 +1,4 @@
-.green{
+/* .green{
   background-color:rgb(81, 236, 81);
 }
 .red{
@@ -7,4 +7,12 @@
 
 .green, .red{
   color:white;
+} */
+.pink{
+  background: #ff4081;
+  color:white;
+}
+.mat-stroked-button
+{
+  margin-left:5px;
 }
