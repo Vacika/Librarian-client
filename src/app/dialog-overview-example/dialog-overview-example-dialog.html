@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Lease informations</h1>
+<div mat-dialog-content>
+  <p>Book leased: {{data.bookTitle}}</p>
+  <p>User: {{data.user}}</p>
+  <p>Time of leasing: {{data.timeOfLease}}</p>
+  <p>Due time: {{data.dueTime}}</p>
+  <p>Returned: {{data.returned ? ' Yes' : ' No'}}</p>
+
+  <!-- <p>Set this book as returned?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.id">
+  </mat-form-field> -->
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" class="red">Exit</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="green">Set as returned</button>
+</div>

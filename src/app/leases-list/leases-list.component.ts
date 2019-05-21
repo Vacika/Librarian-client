@@ -3,6 +3,9 @@ import { Lease } from '../Lease';
 import { LeaseService } from '../lease.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, tap, switchMap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
+import { DialogOverviewExampleDialog } from '../dialog-overview-example/dialog-overview-example.component';
+
 
 @Component({
     selector: 'app-leases-list',
@@ -17,8 +20,8 @@ export class LeasesListComponent implements OnInit {
     term: string;
     searchFailed = false;
     leasesFetchFailed = false;
-    displayedColumns: string[] = ['id', 'timeOfLease', 'due_time', 'inventoryBook', 'returned'];
-    constructor(private service: LeaseService) { }
+    displayedColumns: string[] = ['id', 'user','timeOfLease', 'due_time', 'inventoryBook', 'returned'];
+    constructor(private service: LeaseService, private dialog:MatDialog) { }
 
     ngOnInit() {
         this.service.getAllLeases().subscribe(
@@ -50,12 +53,20 @@ export class LeasesListComponent implements OnInit {
     isExpired(dueTime: string): boolean {
         return this.currentDate.getTime() > Date.parse(dueTime);
     }
-    onLeaseClicked(username: string) {
-        this.service.searchLeasesByUsername(username).subscribe(
-            list => this.leases = list,
-            error => console.error("Error:", error)
-        )
+    openDialog(info:any) {
+            const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+              width: '500px',
+              height:'500px',
+              data: {id: info.id, bookTitle:info.inventoryBook.catalogBook.title,
+                user:info.user.username, timeLeased:info.timeOfLease,
+                dueTime:info.dueTime, returned:info.returned}
+            });
 
+            dialogRef.afterClosed().subscribe(result => {
+              console.log("RESULT: ", result);
+              //TODO: implement service to send request to backend for lease update available
+              result? console.log("YAY RETURNED"): console.log("NAY NOT WORKING");
+            });
     }
 }
 

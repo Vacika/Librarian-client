@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
-import { MatFormFieldModule, MatProgressBarModule, MatCardModule, MatButtonModule, MatInputModule, MatToolbarModule, MatTableModule } from '@angular/material';
+import {
+    MatFormFieldModule, MatProgressBarModule, MatCardModule,
+    MatButtonModule, MatInputModule, MatToolbarModule, MatTableModule,
+    MatDialogModule
+} from '@angular/material';
 
 const components = [
     MatProgressBarModule,
@@ -8,11 +12,12 @@ const components = [
     MatFormFieldModule,
     MatInputModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
 ];
 
 @NgModule({
-  imports: [components],
-  exports: [components]
+    imports: [components],
+    exports: [components]
 })
 export class MaterialModule { }
