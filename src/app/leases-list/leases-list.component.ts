@@ -13,6 +13,7 @@ import { ModalDialog } from '../modal-dialog-admin/modal-dialog.component';
     styleUrls: ['./leases-list.component.css']
 })
 export class LeasesListComponent implements OnInit {
+    displayedColumns: string[] = ['id', 'user', 'timeOfLease', 'due_time', 'inventoryBook', 'returned'];
     searchLeases: Lease[];
     allLeases: Lease[];
     currentDate = new Date();
@@ -20,7 +21,8 @@ export class LeasesListComponent implements OnInit {
     term: string = '';
     searchFailed = false;
     leasesFetchFailed = false;
-    displayedColumns: string[] = ['id', 'user', 'timeOfLease', 'due_time', 'inventoryBook', 'returned'];
+    hideFinishedLeases=false;
+
     constructor(private service: LeaseService, private dialog: MatDialog) { }
 
     ngOnInit() {
@@ -64,7 +66,7 @@ export class LeasesListComponent implements OnInit {
                 id: info.id,
                 bookTitle: info.inventoryBook.catalogBook.title,
                 user: info.user.username,
-                timeLeased: info.timeOfLease,
+                timeOfLease: info.timeOfLease,
                 dueTime: info.dueTime,
                 returned: info.returned
             }

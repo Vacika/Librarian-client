@@ -1,56 +1,73 @@
-.leases-container{
-  padding:0px 20px 20px 20px;
-}
-table{
-  width:100%;
+.leases-container {
+  padding: 0px 20px 20px 20px;
 }
 
-.green{
+table {
+  width: 100%;
+}
+
+.green {
   background-color: lightgreen;
-  color:white;
-}
-.red{
-  background-color:rgb(226, 80, 80);
-  color:white;
+  color: white;
 }
 
-.mat-row{
-  height:36px;
-}
-.mat-row:hover, .mat-row:hover .mat-cell{
-  background-color: #ff4081;
-  color:white;
+.red {
+  background-color: rgb(226, 80, 80);
+  color: white;
 }
 
-.mat-header-cell{
+.mat-row {
+  height: 36px;
+}
+
+.mat-row:hover, .mat-row:hover .mat-cell {
+  background-color: lightgray;
+  color: white;
+  cursor: pointer;
+}
+
+.mat-header-cell {
   font-weight: bolder;
 }
-.search-container
-{
-  padding:0 0 0 20px;
-  width:100%;
+
+.search-container {
+  padding: 0 0 0 20px;
+  width: 100%;
+  display: flex;
 }
 
-.information{
-  display:flex;
-  justify-content:flex-end;
-  margin-top:5px;
+.information {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
 }
 
-.bg{
-  width:20px;
-  height:20px;
-  margin-right:5px;
+.bg {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
-.bg-red{
+
+.bg-red {
   background-color: red;
 }
-.bg-green{
+
+.bg-green {
   background-color: green;
 }
-.description{
-  flex-wrap:nowrap;
-  font-size:10px;
-  align-self:center;
-  padding-right:20px;
+
+.description {
+  flex-wrap: nowrap;
+  font-size: 10px;
+  align-self: center;
+  padding-right: 20px;
+}
+
+.mat-checkbox {
+  margin-left: 20px;
+  align-self: center;
+}
+
+.hide {
+  display: none;
 }

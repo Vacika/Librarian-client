@@ -3,7 +3,11 @@
     <mat-form-field class="example-full-width" color="accent">
       <input matInput placeholder="Search by username" [formControl]="searchInput" class="search-input">
     </mat-form-field>
+
   </form>
+  <mat-checkbox [(ngModel)]="hideFinishedLeases">Hide finished leases</mat-checkbox>
+
+
 </div>
 <div class='leases-container' *ngIf='!searchFailed && !leasesFetchFailed'>
 
@@ -41,7 +45,12 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-      [ngClass]="{'red': isLeaseExpired(row.due_time),'green':row.returned}" (click)='openDialog(row)'></tr>
+      [ngClass]="{
+        'red': isLeaseExpired(row.dueTime),
+        'green':row.returned,
+        'hide':hideFinishedLeases && row.returned
+      }"
+      (click)='openDialog(row)'></tr>
   </table>
 
   <div class='information'>
