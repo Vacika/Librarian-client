@@ -1,10 +1,10 @@
 <h1 mat-dialog-title>Lease informations</h1>
 <div mat-dialog-content>
-  <p>Book leased: {{data.bookTitle}}</p>
-  <p>User: {{data.user}}</p>
-  <p>Time of leasing: {{data.timeOfLease}}</p>
-  <p>Due time: {{data.dueTime}}</p>
-  <p>Returned: {{data.returned ? ' Yes' : ' No'}}</p>
+  <p><span class='label'>Book leased: </span> {{data.bookTitle}}</p>
+  <p><span class='label'>User: </span>{{data.user}}</p>
+  <p><span class='label'>Time of leasing: </span>{{data.timeOfLease}}</p>
+  <p><span class='label'>Due time:</span> {{data.dueTime}}</p>
+  <p><span class='label'>Returned:</span> {{data.returned ? ' Yes' : ' No'}}</p>
 
   <!-- <p>Set this book as returned?</p>
   <mat-form-field>

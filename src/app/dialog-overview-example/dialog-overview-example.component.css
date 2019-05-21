@@ -4,3 +4,6 @@
 .red{
   background-color: rgb(255, 11, 11);
 }
+.mat-dialog-content p .label{
+font-weight:bold;
+}
