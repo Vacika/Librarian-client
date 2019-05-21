@@ -30,3 +30,27 @@ table{
   padding:0 0 0 20px;
   width:100%;
 }
+
+.information{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:5px;
+}
+
+.bg{
+  width:20px;
+  height:20px;
+  margin-right:5px;
+}
+.bg-red{
+  background-color: red;
+}
+.bg-green{
+  background-color: green;
+}
+.description{
+  flex-wrap:nowrap;
+  font-size:10px;
+  align-self:center;
+  padding-right:20px;
+}

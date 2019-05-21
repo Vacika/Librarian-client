@@ -4,7 +4,7 @@ import { LeaseService } from '../lease.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, tap, switchMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
-import { DialogOverviewExampleDialog } from '../dialog-overview-example/dialog-overview-example.component';
+import { ModalDialog } from '../modal-dialog/modal-dialog.component';
 
 
 @Component({
@@ -17,24 +17,14 @@ export class LeasesListComponent implements OnInit {
     allLeases: Lease[];
     currentDate = new Date();
     searchInput = new FormControl();
-    term: string;
+    term: string = '';
     searchFailed = false;
     leasesFetchFailed = false;
-    displayedColumns: string[] = ['id', 'user','timeOfLease', 'due_time', 'inventoryBook', 'returned'];
-    constructor(private service: LeaseService, private dialog:MatDialog) { }
+    displayedColumns: string[] = ['id', 'user', 'timeOfLease', 'due_time', 'inventoryBook', 'returned'];
+    constructor(private service: LeaseService, private dialog: MatDialog) { }
 
     ngOnInit() {
-        this.service.getAllLeases().subscribe(
-            l => {
-                this.allLeases = l
-            },
-            error => {
-                this.leasesFetchFailed = true
-                console.error("Error happened while fetching all leases, data:", error)
-            }
-        )
-
-
+        this.fetchAllLeases();
         this.searchInput.valueChanges.pipe(
             debounceTime(500),
             distinctUntilChanged(),
@@ -50,23 +40,40 @@ export class LeasesListComponent implements OnInit {
                 }
             );
     }
-    isExpired(dueTime: string): boolean {
+
+    fetchAllLeases(){
+        this.service.getAllLeases().subscribe(
+            l => {
+                this.allLeases = l
+            },
+            error => {
+                this.leasesFetchFailed = true
+                console.error("Error happened while fetching all leases, data:", error)
+            }
+        )
+    }
+
+    isLeaseExpired(dueTime: string): boolean {
         return this.currentDate.getTime() > Date.parse(dueTime);
     }
-    openDialog(info:any) {
-            const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-              width: '500px',
-              height:'500px',
-              data: {id: info.id, bookTitle:info.inventoryBook.catalogBook.title,
-                user:info.user.username, timeLeased:info.timeOfLease,
-                dueTime:info.dueTime, returned:info.returned}
-            });
 
-            dialogRef.afterClosed().subscribe(result => {
-              console.log("RESULT: ", result);
-              //TODO: implement service to send request to backend for lease update available
-              result? console.log("YAY RETURNED"): console.log("NAY NOT WORKING");
-            });
+    openDialog(info: any) {
+        const dialogWindow = this.dialog.open(ModalDialog, {
+            data: {
+                id: info.id,
+                bookTitle: info.inventoryBook.catalogBook.title,
+                user: info.user.username,
+                timeLeased: info.timeOfLease,
+                dueTime: info.dueTime,
+                returned: info.returned
+            }
+        });
+
+        dialogWindow.afterClosed().subscribe(dialogResult => {
+            dialogResult ? this.service.updateLeaseReturned(dialogResult)
+                .subscribe(()=>this.fetchAllLeases())
+            : false
+        });
     }
 }
 

@@ -26,5 +26,10 @@ export class LeaseService {
     searchLeasesByUsername(username: string):Observable<Lease[]> {
         return this.http.get<Lease[]>(`${this.baseApi}/user?username=${username}`);
     }
+
+    updateLeaseReturned(id:number){
+        return this.http.post<Lease>(`${this.baseApi}/update`,{"id":id});
+    }
+
     //TODO: IMPLEMENT END POINT ON THE BACK END SPRING.
 }

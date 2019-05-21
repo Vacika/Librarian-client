@@ -3,14 +3,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Lease } from '../Lease';
 
 @Component({
-  selector: 'app-dialog-overview-example',
-  templateUrl: './dialog-overview-example-dialog.html',
-  styleUrls: ['./dialog-overview-example.component.css']
+  selector: 'app-modal-dialog',
+  templateUrl: './modal-dialog.component.html',
+  styleUrls: ['./modal-dialog.component.css']
 })
-export class DialogOverviewExampleDialog  {
+export class ModalDialog  {
 
     constructor(
-        public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+        public dialogRef: MatDialogRef<ModalDialog>,
         @Inject(MAT_DIALOG_DATA) public data: Lease) {}
 
       onNoClick(): void {

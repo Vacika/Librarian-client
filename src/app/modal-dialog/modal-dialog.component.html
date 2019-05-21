@@ -13,5 +13,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()" class="red">Exit</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="green">Set as returned</button>
+  <button mat-button [mat-dialog-close]="data.id" cdkFocusInitial class="green">Set as returned</button>
 </div>
