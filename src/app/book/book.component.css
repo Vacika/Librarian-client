@@ -97,3 +97,8 @@ img:hover {
 #is-available{
   align-self: center;
 }
+.disabled{
+  background-color:rgb(148, 141, 141);
+  opacity:0.6;
+  cursor: not-allowed;
+}

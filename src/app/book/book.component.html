@@ -12,7 +12,9 @@
       {{book.summary}}
     </p>
     <div class='buttons'>
-      <button mat-button (click)="openDialog(book)">LEASE</button>
+      <button mat-button *ngIf="book.available" (click)="openDialog(book)">LEASE</button>
+      <button mat-button *ngIf="!book.available" class='disabled'>LEASE</button>
+
       <span id='is-available' [ngClass]="{'success': book.available,'failed': !book.available}">{{book.available ? 'Available': 'Not available..'}}</span>
       <button mat-button>SHARE</button>
     </div>
