@@ -6,32 +6,37 @@
 
 .media-center {
   padding-left: 35px;
-  display:flex;
+  display: flex;
   flex-direction: column;
-
 }
-.buttons{
-  display:flex;
+
+.buttons {
+  display: flex;
   justify-content: space-between;
 }
-.media-right{
-  margin-left:50px;
-  margin-right:50px;
-  display:flex;
-  flex-direction:column;
+
+.media-right {
+  margin-left: 50px;
+  margin-right: 50px;
+  display: flex;
+  flex-direction: column;
 }
-button{
+
+button {
   background-color: #ff4081;
-  color:white;
-  padding:0px 50px 0px 50px;
+  color: white;
+  padding: 0px 50px 0px 50px;
 }
+
 h2 {
   margin-top: 5px;
 }
-.media-right h6{
-  color:darkgray;
-  text-align:center;
+
+.media-right h6 {
+  color: darkgray;
+  text-align: center;
 }
+
 .graycolor {
   color: #515151;
 }
@@ -46,19 +51,21 @@ img:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 
-.similar-books{
-  display:flex;
+.similar-books {
+  display: flex;
   flex-direction: column;
   text-align: center;
 }
-.object-fit_scale-down { object-fit: scale-down }
+
+.object-fit_scale-down {
+  object-fit: scale-down
+}
 
 .example-card {
   max-width: 200px;
   margin: 0px 20px 5px 20px;
-  cursor:pointer;
+  cursor: pointer;
 }
-
 
 .example-title {
   display: inline-block;
@@ -67,18 +74,23 @@ img:hover {
   overflow: hidden !important;
   text-overflow: ellipsis;
 }
-.mat-card-image{
-  width:250px;
+
+.mat-card-image {
+  width: 250px;
 }
-.similar-book-img{
-  width:50px;
+
+.similar-book-img {
+  width: 50px;
 }
-.lease-info{
-  text-align:center;
+
+.lease-info {
+  text-align: center;
 }
-.success{
-  color:green;
+
+.success {
+  color: green;
 }
-.failed{
-  color:red;
+
+.failed {
+  color: red;
 }

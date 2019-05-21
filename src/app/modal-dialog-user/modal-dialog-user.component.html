@@ -1,13 +1,9 @@
-<h1 mat-dialog-title>Are you sure you want to lease this book?</h1>
-<div mat-dialog-content>
-  <p><span class='label'>Book ID: </span> {{data.id}}</p>
-  <p><span class='label'>Title: </span>{{data.title}}</p>
+<h1 mat-dialog-title>Lease confirmation</h1>
 
-  <!-- <p>Set this book as returned?</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.id">
-  </mat-form-field> -->
+<div mat-dialog-content>
+  <p>Are you sure you want to lease <b>{{data.title}}?</b></p>
 </div>
+
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()" class="red">No</button>
   <button mat-button [mat-dialog-close]="data.id" cdkFocusInitial class="green">Yes</button>

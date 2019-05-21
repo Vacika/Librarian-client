@@ -45,12 +45,13 @@ export class BookComponent implements OnInit {
         dialogWindow.afterClosed().subscribe(dialogResult => {
             dialogResult ? this.leaseService.makeLease(dialogResult).subscribe(
                 lease=>{
-                    this.statusLeasing="Lease successfull!",
-                    this.leaseSuccessful=true
+                    this.statusLeasing="Lease successfull!";
+                    this.leaseSuccessful=true;
                 },
                 error=>{
                     this.statusLeasing="Error happened while trying to lease this book, please refresh and try again.."
                     this.leaseSuccessful=false;
+                    console.error("Error details:",error);
                 })
                 : '';
         });
