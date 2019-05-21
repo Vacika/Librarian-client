@@ -4,6 +4,7 @@ import { LeaseService } from '../lease.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, tap, switchMap } from 'rxjs/operators';
 
+
 @Component({
     selector: 'app-admin-panel',
     templateUrl: './admin-panel.component.html',
@@ -11,6 +12,8 @@ import { debounceTime, distinctUntilChanged, tap, switchMap } from 'rxjs/operato
 })
 export class AdminPanelComponent implements OnInit {
     leases: Lease[];
+    dataSource=this.leases;
+    displayedColumns: string[] = ['id', 'timeOfLease','due_time','inventoryBook','returned'];
     currentDate = new Date();
     searchInput = new FormControl();
     term: string;

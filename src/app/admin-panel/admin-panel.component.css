@@ -1,27 +1,22 @@
 .example-form, .search-container{
   width:100%;
 }
-table{
-  border:2px solid darkgray;
-  border-left:0px;
-  border-right:0px;
-  width:100%;
+.leases-container{
   padding:0px 20px 0px 20px;
 }
-table tbody tr{
-  border:2px solid gray;
-  text-align: center;
+.search-container
+{
+  padding:0 0 0 20px;
+}
+table{
+  width:100%;
 }
 
-thead{
-  background:#ff4081;
-  color:white;
-}
 .green{
   background-color: rgb(11, 172, 11);
 }
-.yellow{
-  background-color: rgb(201, 201, 19);
+.normal{
+  background-color:#fff;
 }
 .red{
   background-color: red;
@@ -32,6 +27,31 @@ thead{
   align-items:center;
   padding:0px 20px 0px 20px;
 }
-tr:hover{
-  box-shadow: 0 0 2px 1px darkblue;
+.mat-row:hover, .mat-row:hover .mat-cell{
+  background-color: #ff4081;
+  color:white;
 }
+
+.mat-header-cell{
+  font-weight: bolder;
+}
+
+/* table{
+  border:2px solid darkgray;
+  border-left:0px;
+  border-right:0px;
+  width:100%;
+  padding:0px 20px 0px 20px;
+}
+table tbody tr{
+  border:2px solid gray;
+  text-align: center;
+}
+td{
+  border:1px solid black;
+}
+
+thead{
+  background:#ff4081;
+  color:white;
+} */
