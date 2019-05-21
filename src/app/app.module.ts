@@ -15,7 +15,8 @@ import { BookSnippetComponent } from './book-snippet/book-snippet.component';
 import { BookSnippetListComponent } from './book-snippet-list/book-snippet-list.component';
 import { PopularBooksComponent } from './popular-books/popular-books.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
-import { ModalDialog } from './modal-dialog/modal-dialog.component';
+import { ModalDialog } from './modal-dialog-admin/modal-dialog.component';
+import { ModalDialogUserComponent } from './modal-dialog-user/modal-dialog-user.component';
 
 const appRoutes: Routes = [
     { path: 'book/:id', component: BookComponent },
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
         PopularBooksComponent,
         AdminPanelComponent,
         ModalDialog,
+        ModalDialogUserComponent,
     ],
     imports: [
         FormsModule,
@@ -55,7 +57,9 @@ const appRoutes: Routes = [
         BrowserAnimationsModule,
         MaterialModule
     ],
-    entryComponents: [ModalDialog],
+    entryComponents: [
+        ModalDialog,
+        ModalDialogUserComponent],
     providers: [],
     bootstrap: [AppComponent]
 })

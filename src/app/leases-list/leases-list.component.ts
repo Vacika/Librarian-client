@@ -4,7 +4,7 @@ import { LeaseService } from '../lease.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, tap, switchMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
-import { ModalDialog } from '../modal-dialog/modal-dialog.component';
+import { ModalDialog } from '../modal-dialog-admin/modal-dialog.component';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { ModalDialog } from '../modal-dialog/modal-dialog.component';
     styleUrls: ['./leases-list.component.css']
 })
 export class LeasesListComponent implements OnInit {
-    leases: Lease[];
+    searchLeases: Lease[];
     allLeases: Lease[];
     currentDate = new Date();
     searchInput = new FormControl();
@@ -25,6 +25,7 @@ export class LeasesListComponent implements OnInit {
 
     ngOnInit() {
         this.fetchAllLeases();
+
         this.searchInput.valueChanges.pipe(
             debounceTime(500),
             distinctUntilChanged(),
@@ -33,7 +34,7 @@ export class LeasesListComponent implements OnInit {
                 return this.service.searchLeasesByUsername(term);
             }))
             .subscribe(
-                lease => this.leases = lease,
+                lease => this.searchLeases = lease,
                 error => {
                     this.searchFailed = true,
                         console.error("Something failed while fetching... Error details:", error)
@@ -41,7 +42,7 @@ export class LeasesListComponent implements OnInit {
             );
     }
 
-    fetchAllLeases(){
+    fetchAllLeases() {
         this.service.getAllLeases().subscribe(
             l => {
                 this.allLeases = l
@@ -71,8 +72,8 @@ export class LeasesListComponent implements OnInit {
 
         dialogWindow.afterClosed().subscribe(dialogResult => {
             dialogResult ? this.service.updateLeaseReturned(dialogResult)
-                .subscribe(()=>this.fetchAllLeases())
-            : false
+                .subscribe(() => this.fetchAllLeases())
+                : false
         });
     }
 }

@@ -13,7 +13,6 @@ export class BookSnippetListComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        console.log(this.books);
     }
 
 }

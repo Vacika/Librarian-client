@@ -12,8 +12,12 @@
       {{book.summary}}
     </p>
     <div class='buttons'>
-      <button mat-button (click)="makeLease()">LEASE</button>
-      <button mat-button>SHARE</button></div>
+      <button mat-button (click)="openDialog(book)">LEASE</button>
+      <button mat-button>SHARE</button>
+    </div>
+    <div class='lease-info'>
+      <p *ngIf='statusLeasing' [ngClass]="{'success': leaseSuccessful,'failed':!leaseSuccessful}">{{statusLeasing}}</p>
+    </div>
   </div>
 
   <div class='media-right'>
@@ -29,4 +33,3 @@
     </div>
   </div>
 </div>
-<!-- <button (click)="makeLease()"> Lease this book! </button> -->

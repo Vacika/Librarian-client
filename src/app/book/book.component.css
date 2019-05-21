@@ -73,3 +73,12 @@ img:hover {
 .similar-book-img{
   width:50px;
 }
+.lease-info{
+  text-align:center;
+}
+.success{
+  color:green;
+}
+.failed{
+  color:red;
+}

@@ -7,7 +7,7 @@
 </div>
 <div class='leases-container' *ngIf='!searchFailed && !leasesFetchFailed'>
 
-  <table mat-table [dataSource]="term=='' ? allLeases : leases" class="mat-elevation-z8">
+  <table mat-table [dataSource]="term=='' ? allLeases : searchLeases" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
