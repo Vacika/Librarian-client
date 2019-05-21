@@ -12,42 +12,12 @@ import { debounceTime, distinctUntilChanged, tap, switchMap } from 'rxjs/operato
 })
 export class AdminPanelComponent implements OnInit {
     leases: Lease[];
-    dataSource=this.leases;
-    displayedColumns: string[] = ['id', 'timeOfLease','due_time','inventoryBook','returned'];
-    currentDate = new Date();
-    searchInput = new FormControl();
-    term: string;
-    searchFailed = false;
-    leasesFetchFailed = false;
-    constructor(private service: LeaseService) { }
+    currentDate=new Date();
+
+    constructor() { }
 
     ngOnInit() {
-
-        this.service.getAllLeases().subscribe(
-            l => this.leases = l,
-            error => {
-                this.leasesFetchFailed = true
-                console.error("Error happened while fetching all leases, data:", error)
-            }
-        )
-        this.searchInput.valueChanges.pipe(
-            debounceTime(500),
-            distinctUntilChanged(),
-            tap(x => this.term = x),
-            switchMap(term => {
-                return this.service.searchLeasesByUsername(term);
-            }))
-            .subscribe(
-                lease => this.leases = lease,
-                error => {
-                    this.searchFailed = true,
-                        console.error("Something failed while fetching... Error details:", error)
-                }
-            );
-
     }
-    isExpired(l: Lease): boolean {
-        return this.currentDate.getTime() > Date.parse(l.due_time);
-    }
+
 
 }

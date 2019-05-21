@@ -1,57 +1,32 @@
-.example-form, .search-container{
-  width:100%;
-}
-.leases-container{
-  padding:0px 20px 0px 20px;
-}
-.search-container
-{
-  padding:0 0 0 20px;
-}
-table{
-  width:100%;
-}
-
-.green{
-  background-color: rgb(11, 172, 11);
-}
-.normal{
-  background-color:#fff;
-}
-.red{
-  background-color: red;
-}
 .header-panel{
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:0px 20px 0px 20px;
 }
-.mat-row:hover, .mat-row:hover .mat-cell{
-  background-color: #ff4081;
-  color:white;
+.header-panel div{
+  color:gray;
+}
+.information{
+  display:flex;
+  justify-content:flex-end;
+  padding-right:20px;
 }
 
-.mat-header-cell{
-  font-weight: bolder;
+.bg{
+  width:20px;
+  height:20px;
+  margin-right:5px;
 }
-
-/* table{
-  border:2px solid darkgray;
-  border-left:0px;
-  border-right:0px;
-  width:100%;
-  padding:0px 20px 0px 20px;
+.bg-red{
+  background-color: red;
 }
-table tbody tr{
-  border:2px solid gray;
-  text-align: center;
+.bg-green{
+  background-color: green;
 }
-td{
-  border:1px solid black;
+.description{
+  flex-wrap:nowrap;
+  font-size:10px;
+  align-self:center;
+  padding-right:20px;
 }
-
-thead{
-  background:#ff4081;
-  color:white;
-} */

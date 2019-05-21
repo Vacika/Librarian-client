@@ -23,7 +23,7 @@ export class LeaseService {
     getAllLeases():Observable<Lease[]>{
         return this.http.get<Lease[]>(`${this.baseApi}/all`);
     }
-    searchLeasesByUsername(term: string):Observable<Lease[]> {
+    searchLeasesByUsername(term: number):Observable<Lease[]> {
         return this.http.get<Lease[]>(`${this.baseApi}/user/${term}`);
     }
     //TODO: IMPLEMENT END POINT ON THE BACK END SPRING.

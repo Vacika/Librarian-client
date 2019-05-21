@@ -1,0 +1,32 @@
+.leases-container{
+  padding:0px 20px 20px 20px;
+}
+table{
+  width:100%;
+}
+
+.green{
+  background-color: lightgreen;
+  color:white;
+}
+.red{
+  background-color:rgb(226, 80, 80);
+  color:white;
+}
+
+.mat-row{
+  height:36px;
+}
+.mat-row:hover, .mat-row:hover .mat-cell{
+  background-color: #ff4081;
+  color:white;
+}
+
+.mat-header-cell{
+  font-weight: bolder;
+}
+.search-container
+{
+  padding:0 0 0 20px;
+  width:100%;
+}
