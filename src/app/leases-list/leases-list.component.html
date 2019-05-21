@@ -7,7 +7,7 @@
 </div>
 <div class='leases-container'>
 
-  <table mat-table [dataSource]="leases.length>0?leases : allLeases" class="mat-elevation-z8">
+  <table mat-table [dataSource]="leases && leases.length>0?leases : allLeases" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
