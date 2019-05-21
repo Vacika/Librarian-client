@@ -94,4 +94,6 @@ img:hover {
 .failed {
   color: red;
 }
-
+#is-available{
+  align-self: center;
+}

@@ -46,8 +46,8 @@ export class LeasesListComponent implements OnInit {
 
     fetchAllLeases() {
         this.service.getAllLeases().subscribe(
-            l => {
-                this.allLeases = l
+            resultArray => {
+                this.allLeases = resultArray
             },
             error => {
                 this.leasesFetchFailed = true
