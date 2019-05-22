@@ -22,8 +22,8 @@
       <p *ngIf='statusLeasing' [ngClass]="{'success': leaseSuccessful,'failed':!leaseSuccessful}">{{statusLeasing}}</p>
     </div>
   </div>
-
-  <div class='media-right' *ngIf='!errorSimilarFetching'>
+<!-- If not failed fetching similarBooks or if fetching completed and there are >0 similar books then display -->
+  <div class='media-right' *ngIf='!errorSimilarFetching && similarBooks.length>0'>
     <h6>You might also like these books</h6>
     <div class='similar-books' *ngIf='similarBooks'>
       <mat-card class="example-card object-fit_scale-down" *ngFor="let b of similarBooks" (click)='fetchBookById(b.id)'>
@@ -40,5 +40,5 @@
   </div>
 </div>
 <div *ngIf="errorFetching">
-  <p class='failed'>Error happened while fetching data, please refresh and try again...</p>
+  <p class='failed'>Error happened while fetching book data, please refresh and try again...</p>
 </div>
