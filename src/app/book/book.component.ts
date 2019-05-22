@@ -52,6 +52,8 @@ export class BookComponent implements OnInit {
             }
         });
         //TODO: Improve code readibility
+
+        //Logic: If result from dialog is Yes, then make a lease,else return whatever, in this case returns false
         dialogWindow.afterClosed().subscribe(dialogResult => {
             dialogResult ? this.leaseService.makeLease(dialogResult).subscribe(
                 lease => {
@@ -63,7 +65,7 @@ export class BookComponent implements OnInit {
                     this.leaseSuccessful = false;
                     console.error("Error details:", error);
                 })
-                : '';
+                : false;
         });
     }
 }

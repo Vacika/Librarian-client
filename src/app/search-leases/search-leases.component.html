@@ -9,7 +9,10 @@
 </div>
 
 <div class='leases-container' *ngIf="!leasesFetchFailed">
-  <app-leases-list [leases]="term=='' ? allLeases : searchLeases" [hideFinishedLeases]='hideFinishedLeases'></app-leases-list>
+  <app-leases-list
+  [leases]="term=='' ? allLeases : searchLeases"
+  [hideFinishedLeases]='hideFinishedLeases'
+  ></app-leases-list>
 </div>
 
 <div class='search-error' *ngIf="leasesFetchFailed">
