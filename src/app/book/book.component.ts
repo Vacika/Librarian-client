@@ -16,6 +16,8 @@ export class BookComponent implements OnInit {
     statusLeasing: string;
     similarBooks: CatalogBook[];
     leaseSuccessful = false;
+    errorFetching = false;
+    errorSimilarFetching = false;
 
     constructor(private route: ActivatedRoute,
         private leaseService: LeaseService,
@@ -27,16 +29,18 @@ export class BookComponent implements OnInit {
         this.route.params.subscribe(params => this.bookId = params['id']);
         this.fetchBookById(this.bookId)
     }
-    fetchBookById(id:number){
-        this.bookId=id;
+    fetchBookById(id: number) {
+        this.bookId = id;
         this.catalogService.getCatalogBookById(this.bookId).subscribe(
-            book => this.book = book
+            book => this.book = book,
+            error => this.errorFetching = true
         );
         this.catalogService.getSimilarBooks(this.bookId)
             .subscribe(
-                books => this.similarBooks = books
+                books => this.similarBooks = books,
+                error => this.errorSimilarFetching = true
             );
-        window.history.replaceState({}, '',`/book/${this.bookId}`); // change route path
+        window.history.replaceState({}, '', `/book/${this.bookId}`); // change route path
 
     }
 
