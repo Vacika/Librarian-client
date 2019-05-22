@@ -13,45 +13,14 @@ import { ModalDialog } from '../modal-dialog-admin/modal-dialog.component';
 })
 export class LeasesListComponent implements OnInit {
     displayedColumns: string[] = ['id', 'user', 'timeOfLease', 'due_time', 'inventoryBook', 'returned'];
-    searchLeases: Lease[];
-    allLeases: Lease[];
+    @Input() leases:Lease[]
+    @Input() hideFinishedLeases:boolean;
     currentDate = new Date();
-    searchInput = new FormControl();
-    term: string = '';
-    leasesFetchFailed = false;
-    hideFinishedLeases = false;
 
     constructor(private service: LeaseService, private dialog: MatDialog) { }
 
     ngOnInit() {
-        this.fetchAllLeases();
-
-        this.searchInput.valueChanges.pipe(
-            debounceTime(500),
-            distinctUntilChanged(),
-            tap(x => this.term = x),
-            switchMap(term => {
-                return this.service.searchLeasesByUsername(term);
-            }))
-            .subscribe(
-                lease => this.searchLeases = lease,
-                error => {
-                    this.leasesFetchFailed = true,
-                        console.error("Something failed while fetching... Error details:", error)
-                }
-            );
-    }
-
-    fetchAllLeases() {
-        this.service.getAllLeases().subscribe(
-            resultArray => {
-                this.allLeases = resultArray
-            },
-            error => {
-                this.leasesFetchFailed = true
-                console.error("Error happened while fetching all leases, data:", error)
-            }
-        )
+        console.log(this.leases);
     }
 
     isLeaseExpired(dueTime: string): boolean {
@@ -72,7 +41,9 @@ export class LeasesListComponent implements OnInit {
 
         dialogWindow.afterClosed().subscribe(dialogResult => {
             dialogResult ? this.service.updateLeaseReturned(dialogResult)
-                .subscribe(() => this.fetchAllLeases())
+                .subscribe(
+                //todo Add refresh leases(fetch all leases via eventEmitter)
+                )
                 : false
         });
     }

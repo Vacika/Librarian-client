@@ -31,5 +31,4 @@ export class LeaseService {
         return this.http.post<Lease>(`${this.baseApi}/update`,{"id":id});
     }
 
-    //TODO: IMPLEMENT END POINT ON THE BACK END SPRING.
 }

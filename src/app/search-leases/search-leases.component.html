@@ -1,0 +1,17 @@
+<div class="search-container">
+  <form class="example-form">
+    <mat-form-field class="example-full-width" color="accent">
+      <input matInput placeholder="Search by email" [formControl]="searchInput" class="search-input">
+    </mat-form-field>
+
+  </form>
+  <mat-checkbox [(ngModel)]="hideFinishedLeases">Hide finished leases</mat-checkbox>
+</div>
+
+<div class='leases-container' *ngIf="!leasesFetchFailed">
+  <app-leases-list [leases]="term=='' ? allLeases : searchLeases" [hideFinishedLeases]='hideFinishedLeases'></app-leases-list>
+</div>
+
+<div class='search-error' *ngIf="leasesFetchFailed">
+  <h4>Some error happened while fetching, please refresh the page and try again..</h4>
+</div>

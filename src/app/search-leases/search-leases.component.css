@@ -1,0 +1,10 @@
+
+.search-container {
+  padding: 0 0 0 20px;
+  width: 100%;
+  display: flex;
+}
+.mat-checkbox {
+  margin-left: 20px;
+  align-self: center;
+}
