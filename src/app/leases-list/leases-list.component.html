@@ -1,7 +1,7 @@
 <div class="search-container">
   <form class="example-form">
     <mat-form-field class="example-full-width" color="accent">
-      <input matInput placeholder="Search by username" [formControl]="searchInput" class="search-input">
+      <input matInput placeholder="Search by email" [formControl]="searchInput" class="search-input">
     </mat-form-field>
 
   </form>
@@ -9,7 +9,7 @@
 
 
 </div>
-<div class='leases-container' *ngIf='!searchFailed && !leasesFetchFailed'>
+<div class='leases-container' *ngIf='!leasesFetchFailed'>
 
   <table mat-table [dataSource]="term=='' ? allLeases : searchLeases" class="mat-elevation-z8">
 
@@ -19,7 +19,7 @@
     </ng-container>
 
     <ng-container matColumnDef="user">
-      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <th mat-header-cell *matHeaderCellDef> Email </th>
       <td mat-cell *matCellDef="let lease"> {{lease.user? lease.user.username : '' }} </td>
     </ng-container>
 
@@ -46,9 +46,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{
         'red': isLeaseExpired(row.dueTime),
-        'green':row.returned,
-        'hide':hideFinishedLeases && row.returned
-      }" (click)='openDialog(row)'></tr>
+        'green':row.returned }" [hidden]="row.returned && hideFinishedLeases" (click)="openDialog(row)"></tr>
   </table>
 
   <div class='information'>
@@ -57,6 +55,6 @@
   </div>
 </div>
 
-<div class='search-error' *ngIf="searchFailed || leasesFetchFailed">
+<div class='search-error' *ngIf="leasesFetchFailed">
   <h4>Some error happened while fetching, please refresh the page and try again..</h4>
 </div>

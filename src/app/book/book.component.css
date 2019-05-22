@@ -94,11 +94,13 @@ img:hover {
 .failed {
   color: red;
 }
-#is-available{
+
+#is-available {
   align-self: center;
 }
-.disabled{
-  background-color:rgb(148, 141, 141);
-  opacity:0.6;
+
+.disabled {
+  background-color: rgb(148, 141, 141);
+  opacity: 0.6;
   cursor: not-allowed;
 }

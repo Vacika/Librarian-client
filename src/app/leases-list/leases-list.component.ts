@@ -5,12 +5,11 @@ import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, tap, switchMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { ModalDialog } from '../modal-dialog-admin/modal-dialog.component';
-
-
 @Component({
     selector: 'app-leases-list',
     templateUrl: './leases-list.component.html',
     styleUrls: ['./leases-list.component.css']
+
 })
 export class LeasesListComponent implements OnInit {
     displayedColumns: string[] = ['id', 'user', 'timeOfLease', 'due_time', 'inventoryBook', 'returned'];
@@ -19,9 +18,8 @@ export class LeasesListComponent implements OnInit {
     currentDate = new Date();
     searchInput = new FormControl();
     term: string = '';
-    searchFailed = false;
     leasesFetchFailed = false;
-    hideFinishedLeases=false;
+    hideFinishedLeases = false;
 
     constructor(private service: LeaseService, private dialog: MatDialog) { }
 
@@ -38,7 +36,7 @@ export class LeasesListComponent implements OnInit {
             .subscribe(
                 lease => this.searchLeases = lease,
                 error => {
-                    this.searchFailed = true,
+                    this.leasesFetchFailed = true,
                         console.error("Something failed while fetching... Error details:", error)
                 }
             );
