@@ -21,11 +21,8 @@ import { SearchLeasesComponent } from './search-leases/search-leases.component';
 
 const appRoutes: Routes = [
     { path: 'book/:id', component: BookComponent },
-    //   { path: 'home', component: SearchComponent },
     { path: 'home', component: HomeComponent },
     { path: 'adminpanel', component: AdminPanelComponent },
-
-
     {
         path: '',
         redirectTo: '/home',

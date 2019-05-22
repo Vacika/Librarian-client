@@ -27,7 +27,7 @@
   <div class='media-right'>
     <h6>You might also like these books</h6>
     <div class='similar-books' *ngIf='similarBooks'>
-      <mat-card class="example-card object-fit_scale-down" *ngFor="let b of similarBooks" routerLink="/book/{{b.id}}">
+      <mat-card class="example-card object-fit_scale-down" *ngFor="let b of similarBooks" (click)='fetchBookById(b.id)'>
         <img class="similar-book-img" mat-card-image src="{{b.cover}}" alt="Book Cover">
         <mat-card-header>
           <mat-card-title class="example-title">{{b.title}}</mat-card-title>

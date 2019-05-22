@@ -13,9 +13,9 @@ import { MatDialog } from '@angular/material';
 export class BookComponent implements OnInit {
     bookId: number;
     book: CatalogBook;
-    statusLeasing:string;
+    statusLeasing: string;
     similarBooks: CatalogBook[];
-    leaseSuccessful=false;
+    leaseSuccessful = false;
 
     constructor(private route: ActivatedRoute,
         private leaseService: LeaseService,
@@ -25,6 +25,10 @@ export class BookComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.subscribe(params => this.bookId = params['id']);
+        this.fetchBookById(this.bookId)
+    }
+    fetchBookById(id:number){
+        this.bookId=id;
         this.catalogService.getCatalogBookById(this.bookId).subscribe(
             book => this.book = book
         );
@@ -32,6 +36,8 @@ export class BookComponent implements OnInit {
             .subscribe(
                 books => this.similarBooks = books
             );
+        window.history.replaceState({}, '',`/book/${this.bookId}`); // change route path
+
     }
 
     openDialog(book: CatalogBook) {
@@ -41,17 +47,17 @@ export class BookComponent implements OnInit {
                 title: book.title
             }
         });
-//TODO: Improve code readibility
+        //TODO: Improve code readibility
         dialogWindow.afterClosed().subscribe(dialogResult => {
             dialogResult ? this.leaseService.makeLease(dialogResult).subscribe(
-                lease=>{
-                    this.statusLeasing="Lease successfull!";
-                    this.leaseSuccessful=true;
+                lease => {
+                    this.statusLeasing = "Lease successfull!";
+                    this.leaseSuccessful = true;
                 },
-                error=>{
-                    this.statusLeasing="Error happened while trying to lease this book, please refresh and try again.."
-                    this.leaseSuccessful=false;
-                    console.error("Error details:",error);
+                error => {
+                    this.statusLeasing = "Error happened while trying to lease this book, please refresh and try again.."
+                    this.leaseSuccessful = false;
+                    console.error("Error details:", error);
                 })
                 : '';
         });
