@@ -7,7 +7,7 @@ import { Lease } from './Lease';
     providedIn: 'root'
 })
 export class LeaseService {
-    baseApi = "http://localhost:8080/leases";
+    baseApi = "/api/leases";
 
     httpOptions = {
         headers: new HttpHeaders({

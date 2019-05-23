@@ -5,9 +5,9 @@ import { FormControl } from '@angular/forms';
 import { CatalogService } from '../catalog.service';
 
 @Component({
-    selector: 'app-search',
-    templateUrl: './search.component.html',
-    styleUrls: ['./search.component.css']
+    selector: 'app-search-books',
+    templateUrl: './search-books.component.html',
+    styleUrls: ['./search-books.component.css']
 })
 export class SearchComponent implements OnInit {
     catalogBooks: CatalogBook[];

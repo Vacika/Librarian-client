@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BookComponent } from './book/book.component';
 import { LeasesListComponent } from './leases-list/leases-list.component';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './search-books/search-books.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';

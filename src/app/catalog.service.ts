@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CatalogService {
 
-    baseApi = '/api/catalog_books';
+    baseApi = '/api/public/books';
 
     constructor(private http: HttpClient) { }
 
