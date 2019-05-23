@@ -11,7 +11,7 @@ import { debounceTime, distinctUntilChanged, tap, switchMap } from 'rxjs/operato
     styleUrls: ['./admin-panel.component.css']
 })
 export class AdminPanelComponent implements OnInit {
-    currentDate=new Date();
+    currentDate = new Date();
 
     constructor() { }
 

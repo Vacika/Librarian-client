@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Lease } from '../Lease';
 import { LeaseService } from '../lease.service';
 import { FormControl } from '@angular/forms';
@@ -16,6 +16,7 @@ export class SearchLeasesComponent implements OnInit {
     searchInput = new FormControl()
     hideFinishedLeases:boolean;
     term = '';
+
     constructor(private service: LeaseService) { }
 
     ngOnInit() {

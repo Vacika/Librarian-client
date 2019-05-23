@@ -9,8 +9,6 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class LoginComponent implements OnInit {
 
-    isAuthenticated = false;
-
     userInfo = new FormGroup({
         username: new FormControl(''),
         password: new FormControl(''),
@@ -22,14 +20,11 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
-        const u = this.userInfo.value;
-        this.service.login(u.username, u.password)
+        const user = this.userInfo.value;
+        this.service.login(user.username, user.password)
             .subscribe({
-                next: ev => {
-                    console.log(ev);
-                    this.isAuthenticated = ev;
-                },
+                next: val => console.log(val),
                 error: err => console.log(err)
-            })
+            });
     }
 }
