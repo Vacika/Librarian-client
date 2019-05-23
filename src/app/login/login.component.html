@@ -1,0 +1,5 @@
+<form [formGroup]="userInfo" (ngSubmit)="onSubmit()" *ngIf="!isAuthenticated">
+  <input type="text" formControlName="username" placeholder="username">
+  <input type="text" formControlName="password" placeholder="password">
+  <button type="submit">Log in</button>
+</form>

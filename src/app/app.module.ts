@@ -18,11 +18,13 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ModalDialog } from './modal-dialog-admin/modal-dialog.component';
 import { ModalDialogUserComponent } from './modal-dialog-user/modal-dialog-user.component';
 import { SearchLeasesComponent } from './search-leases/search-leases.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
     { path: 'book/:id', component: BookComponent },
     { path: 'home', component: HomeComponent },
     { path: 'adminpanel', component: AdminPanelComponent },
+    { path: 'login', component: LoginComponent },
     {
         path: '',
         redirectTo: '/home',
@@ -45,6 +47,7 @@ const appRoutes: Routes = [
         ModalDialog,
         ModalDialogUserComponent,
         SearchLeasesComponent,
+        LoginComponent,
     ],
     imports: [
         FormsModule,
