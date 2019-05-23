@@ -33,7 +33,7 @@ export class SearchLeasesComponent implements OnInit {
                 resultArray => this.searchLeases = resultArray,
                 error => {
                     this.leasesFetchFailed = true,
-                        console.error("Something failed while fetching... Error details:", error)
+                    console.error("Something failed while fetching... Error details:", error)
                 }
             );
 

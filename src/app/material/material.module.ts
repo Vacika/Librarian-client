@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import {
     MatFormFieldModule, MatProgressBarModule, MatCardModule,
     MatButtonModule, MatInputModule, MatToolbarModule, MatTableModule,
-    MatDialogModule,MatCheckbox, MatCheckboxModule
+    MatDialogModule,MatCheckbox, MatMenuModule, MatIconModule, MatProgressSpinnerModule, MatCheckboxModule
 } from '@angular/material';
 
 const components = [
@@ -14,6 +14,9 @@ const components = [
     MatToolbarModule,
     MatTableModule,
     MatDialogModule,
+    MatMenuModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
     MatCheckboxModule
 ];
 

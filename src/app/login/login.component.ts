@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
+import { User } from '../User';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -8,13 +10,14 @@ import { AuthenticationService } from '../authentication.service';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+    user:User;
+    authenticated=true;
     userInfo = new FormGroup({
         username: new FormControl(''),
         password: new FormControl(''),
     });
 
-    constructor(private service: AuthenticationService) { }
+    constructor(private service: AuthenticationService, private route:Router) { }
 
     ngOnInit() {
     }
@@ -23,8 +26,14 @@ export class LoginComponent implements OnInit {
         const user = this.userInfo.value;
         this.service.login(user.username, user.password)
             .subscribe({
-                next: val => console.log(val),
-                error: err => console.log(err)
+                next: user=>{
+                    this.user=user;
+                    this.route.navigate(['/home']);
+                },
+                error: err => {
+                    this.authenticated=false;
+                    console.error("Authentication failed, error:",err)
+                }
             });
     }
 }

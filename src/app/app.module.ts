@@ -20,6 +20,7 @@ import { ModalDialogUserComponent } from './modal-dialog-user/modal-dialog-user.
 import { SearchLeasesComponent } from './search-leases/search-leases.component';
 import { LoginComponent } from './login/login.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { MatCheckboxModule } from '@angular/material';
 
 const appRoutes: Routes = [
     { path: 'book/:id', component: BookComponent },
@@ -64,7 +65,8 @@ const appRoutes: Routes = [
     ],
     entryComponents: [
         ModalDialog,
-        ModalDialogUserComponent],
+        ModalDialogUserComponent,
+    ],
     providers: [],
     bootstrap: [AppComponent]
 })
