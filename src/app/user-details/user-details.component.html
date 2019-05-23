@@ -1,0 +1,8 @@
+<div class='user-container'>
+
+  <h3>Your leases</h3>
+  <mat-checkbox [(ngModel)]="hideFinishedLeases">Hide finished leases</mat-checkbox>
+  <div class='leases-container' *ngIf='!errorFetchingLeases'>
+    <app-leases-list [leases]='userLeases' [hideFinishedLeases]='hideFinishedLeases'></app-leases-list>
+  </div>
+</div>

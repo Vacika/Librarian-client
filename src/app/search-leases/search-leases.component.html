@@ -4,7 +4,6 @@
       <input matInput placeholder="Search by email" [formControl]="searchInput" class="search-input">
     </mat-form-field>
   </form>
-  <mat-checkbox [(ngModel)]="hideFinishedLeases">Hide finished leases</mat-checkbox>
 </div>
 
 <div class='leases-container' *ngIf="!leasesFetchFailed">
