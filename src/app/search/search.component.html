@@ -10,6 +10,7 @@
       </mat-form-field>
     </form>
 
+    <!-- refactor ngIf-->
     <div class="search-results-container" *ngIf="catalogBooks && term != '' && term !== undefined">
       <ul>
         <li *ngFor="let book of catalogBooks" routerLink="/book/{{book.id}}">

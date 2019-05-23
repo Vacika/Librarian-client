@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
             next: books => {
                 this.catalogBooks = books;
             },
-        });
+        }); // DO I NEED THIS??
         this.searchInput.valueChanges.pipe(
             debounceTime(500),
             distinctUntilChanged(),

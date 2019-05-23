@@ -12,6 +12,10 @@ export class PopularBooksComponent implements OnInit {
     constructor(private service: CatalogService) { }
 
     ngOnInit() {
+        this.fetchPopularBooks()
+    }
+    fetchPopularBooks():void
+    {
         this.service.getPopularCatalogBooks().subscribe(
             books => this.popularBooks = books,
             error => console.error("Failed fetching popular books from the api, error data:", error)
