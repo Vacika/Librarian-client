@@ -16,13 +16,14 @@ export class LeaseService {
     };
 
     constructor(private http: HttpClient) { }
+    getAllLeases():Observable<Lease[]>{
+        return this.http.get<Lease[]>(`${this.baseApi}`);
+    }
 
-    makeLease(id: number): Observable<Lease> {
+    newLease(id: number): Observable<Lease> {
         return this.http.post<Lease>(`${this.baseApi}/new`, { "id": id });
     };
-    getAllLeases():Observable<Lease[]>{
-        return this.http.get<Lease[]>(`${this.baseApi}/all`);
-    }
+
     searchLeasesByUsername(username: string):Observable<Lease[]> {
         return this.http.get<Lease[]>(`${this.baseApi}/user?username=${username}`);
     }
