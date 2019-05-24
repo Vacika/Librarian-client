@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CatalogBook } from '../CatalogBook';
+import { CatalogBook } from '../models/CatalogBook';
 
 @Component({
     selector: 'app-book-snippet',
@@ -12,7 +12,6 @@ export class BookSnippetComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() {
-    }
+    ngOnInit() { }
 
 }

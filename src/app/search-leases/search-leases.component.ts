@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Lease } from '../Lease';
-import { LeaseService } from '../lease.service';
+import { Lease } from '../models/Lease';
+import { LeaseService } from '../services/lease.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, tap, switchMap } from 'rxjs/operators';
 

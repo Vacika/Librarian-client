@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AuthenticationService } from '../authentication.service';
-import { User } from '../User';
+import { AuthenticationService } from '../services/authentication.service';
+import { User } from '../models/User';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
     user:User;
     authenticated=true;
-    userInfo = new FormGroup({
+    credentialsForm = new FormGroup({
         username: new FormControl(''),
         password: new FormControl(''),
     });
@@ -23,11 +23,12 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
-        const user = this.userInfo.value;
-        this.service.login(user.username, user.password)
+        const credentials = this.credentialsForm.value;
+        this.service.login(credentials.username, credentials.password)
             .subscribe({
                 next: user=>{
                     this.user=user;
+                    console.log("USER:",this.user);
                     this.route.navigate(['/home']);
                 },
                 error: err => {

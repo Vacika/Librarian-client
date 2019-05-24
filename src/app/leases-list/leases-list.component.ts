@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Lease } from '../Lease';
-import { LeaseService } from '../lease.service';
+import { LeaseService } from '../services/lease.service';
 import { MatDialog } from '@angular/material';
-import { ModalDialog } from '../modal-dialog-admin/modal-dialog.component';
+import { DialogLeaseDetailComponent } from '../modal-dialogs/dialog-lease-details/dialog-lease-details.component';
+import { Lease } from '../models/Lease';
 
 @Component({
     selector: 'app-leases-list',
@@ -11,7 +11,7 @@ import { ModalDialog } from '../modal-dialog-admin/modal-dialog.component';
 
 })
 export class LeasesListComponent implements OnInit {
-    displayedColumns: string[] = ['id', 'user', 'timeOfLease', 'due_time', 'inventoryBook', 'returned'];
+    displayedColumns: string[] = ['id', 'user', 'timeOfLease', 'dueTime', 'inventoryBook', 'returned'];
     @Input() leases: Lease[]
     @Input() hideFinishedLeases: boolean;
     currentDate = new Date();
@@ -19,7 +19,6 @@ export class LeasesListComponent implements OnInit {
     constructor(private service: LeaseService, private dialog: MatDialog) { }
 
     ngOnInit() {
-        console.log(this.leases);
     }
 
     isLeaseExpired(dueTime: string): boolean {
@@ -27,14 +26,17 @@ export class LeasesListComponent implements OnInit {
     }
 
     openDialog(info: any) {
-        const dialogWindow = this.dialog.open(ModalDialog, {
+        console.log(this.leases);
+
+        const dialogWindow = this.dialog.open(DialogLeaseDetailComponent, {
             data: {
                 id: info.id,
                 bookTitle: info.inventoryBook.catalogBook.title,
-                user: info.user.username,
+                user: info.user.email,
                 timeOfLease: info.timeOfLease,
                 dueTime: info.dueTime,
                 returned: info.returned
+                //role:userrole
             }
         });
         //Dialog result = ID of the lease updated if updated, else dialogResult=undefined

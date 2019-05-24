@@ -1,0 +1,10 @@
+h3, mat-checkbox{
+  padding-left:20px;
+}
+.header
+{
+  display:flex;
+}
+mat-checkbox{
+  align-self:center;
+}

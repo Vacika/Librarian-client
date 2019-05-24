@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Lease } from './Lease';
+import { Lease } from '../models/Lease';
 
 @Injectable({
     providedIn: 'root'
@@ -24,8 +24,8 @@ export class LeaseService {
         return this.http.post<Lease>(`${this.baseApi}/new`, { "id": id });
     };
 
-    searchLeasesByUsername(username: string):Observable<Lease[]> {
-        return this.http.get<Lease[]>(`${this.baseApi}/user?username=${username}`);
+    searchLeasesByUsername(email: string):Observable<Lease[]> {
+        return this.http.get<Lease[]>(`${this.baseApi}/user?email=${email}`);
     }
 
     updateLeaseReturned(id:number){

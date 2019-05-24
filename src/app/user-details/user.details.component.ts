@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Lease } from '../Lease';
-import { User } from '../User';
-import { LeaseService } from '../lease.service';
+import { Lease } from '../models/Lease';
+import { User } from '../models/User';
+import { LeaseService } from '../services/lease.service';
 
 @Component({
     selector: 'app-user-details',
@@ -10,26 +10,27 @@ import { LeaseService } from '../lease.service';
 })
 export class UserDetailsComponent implements OnInit {
     userLeases: Lease[];
-    @Input() user: User;
+    // @Input() user: User;
     hideFinishedLeases: boolean;
     currentDate = new Date();
     errorFetchingLeases = false;
 
-
-    constructor(private leaseService: LeaseService) { }
+    constructor(private leaseService: LeaseService) {}
 
     ngOnInit() {
         this.getUserLeases();
     }
-    getUserLeases() {
-        this.leaseService.searchLeasesByUsername(this.user.email)
-            .subscribe(
+
+    getUserLeases() :void{
+
+        // this.leaseService.searchLeasesByUsername(this.user.email)
+        this.leaseService.searchLeasesByUsername("jsnow@jsnow.com")
+        .subscribe(
                 resultArray => this.userLeases = resultArray,
                 error => { ///TODO: Visualise this error
                     this.errorFetchingLeases = true;
-                    console.log("error:", error);
+                    console.log("Fetching leases error:", error);
                 }
-            )
+            );
     }
-
 }

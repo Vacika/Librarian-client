@@ -15,12 +15,11 @@ import { BookSnippetComponent } from './book-snippet/book-snippet.component';
 import { BookSnippetListComponent } from './book-snippet-list/book-snippet-list.component';
 import { PopularBooksComponent } from './popular-books/popular-books.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
-import { ModalDialog } from './modal-dialog-admin/modal-dialog.component';
-import { ModalDialogUserComponent } from './modal-dialog-user/modal-dialog-user.component';
+import { DialogMakeLeaseComponent } from './modal-dialogs/dialog-make-lease/dialog-make-lease.component';
 import { SearchLeasesComponent } from './search-leases/search-leases.component';
 import { LoginComponent } from './login/login.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
-import { MatCheckboxModule } from '@angular/material';
+import { UserDetailsComponent } from './user-details/user.details.component';
+import { DialogLeaseDetailComponent } from './modal-dialogs/dialog-lease-details/dialog-lease-details.component';
 
 const appRoutes: Routes = [
     { path: 'book/:id', component: BookComponent },
@@ -47,8 +46,8 @@ const appRoutes: Routes = [
         BookSnippetListComponent,
         PopularBooksComponent,
         AdminPanelComponent,
-        ModalDialog,
-        ModalDialogUserComponent,
+        DialogLeaseDetailComponent,
+        DialogMakeLeaseComponent,
         SearchLeasesComponent,
         LoginComponent,
         UserDetailsComponent,
@@ -64,8 +63,8 @@ const appRoutes: Routes = [
         MaterialModule
     ],
     entryComponents: [
-        ModalDialog,
-        ModalDialogUserComponent,
+        DialogLeaseDetailComponent,
+        DialogMakeLeaseComponent,
     ],
     providers: [],
     bootstrap: [AppComponent]

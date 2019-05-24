@@ -1,4 +1,3 @@
-
 <div class='leases-container'>
 
   <table mat-table [dataSource]="leases" class="mat-elevation-z8">
@@ -10,7 +9,7 @@
 
     <ng-container matColumnDef="user">
       <th mat-header-cell *matHeaderCellDef> Email </th>
-      <td mat-cell *matCellDef="let lease"> {{lease.user? lease.user.username : '' }} </td>
+      <td mat-cell *matCellDef="let lease"> {{lease.user.email}} </td>
     </ng-container>
 
     <ng-container matColumnDef="timeOfLease">
@@ -18,7 +17,7 @@
       <td mat-cell *matCellDef="let lease"> {{lease.timeOfLease  | date:'dd-MMM yyyy   HH:mm:ss'}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="due_time">
+    <ng-container matColumnDef="dueTime">
       <th mat-header-cell *matHeaderCellDef> Due time </th>
       <td mat-cell *matCellDef="let lease"> {{lease.dueTime  | date:'dd-MMM yyyy   HH:mm:ss'}} </td>
     </ng-container>
@@ -44,5 +43,3 @@
     <span class='bg bg-green'></span> <span class='description'>Returned in time</span>
   </div>
 </div>
-
-

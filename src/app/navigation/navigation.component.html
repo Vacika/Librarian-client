@@ -1,6 +1,16 @@
 <mat-toolbar class="navbar">
   <img src="https://i.ibb.co/GCpSP0B/4354312.png" routerLink="/" class='logo' alt="Logo">
   <div>
+
+    <!--TODO: Add ngIf role=admin -> admin panel else -> yourleases -->
+      <a mat-button routerLink="/adminpanel" color="accent">
+        <i class="material-icons">format_list_bulleted</i>
+        <span id="sign-out">ADMIN PANEL</span>
+      </a>
+      <a mat-button routerLink="/userdetails" color="accent">
+        <i class="material-icons">format_list_bulleted</i>
+        <span id="sign-out">YOUR LEASES</span>
+      </a>
     <a mat-button routerLink="/" color="accent">
       <i class="material-icons">home</i>
       <span id="sign-in">HOME</span>
@@ -14,6 +24,11 @@
     <a mat-button routerLink="/login" color="accent">
       <i class="material-icons">account_circle</i>
       <span id="sign-in">SIGN IN</span>
+    </a>
+
+    <a mat-button routerLink="/logout" color="accent">
+      <i class="material-icons">subdirectory_arrow_right</i>
+      <span id="sign-out">SIGN OUT</span>
     </a>
   </div>
 </mat-toolbar>

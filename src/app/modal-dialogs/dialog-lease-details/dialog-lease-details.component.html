@@ -5,13 +5,9 @@
   <p><span class='label'>Time of leasing: </span>{{data.timeOfLease | date:'dd MMM yyyy HH:mm:ss'}}</p>
   <p><span class='label'>Due time:</span> {{data.dueTime | date:'dd MMM yyyy HH:mm:ss'}}</p>
   <p><span class='label'>Returned:</span> {{data.returned ? ' Yes' : ' No'}}</p>
-
-  <!-- <p>Set this book as returned?</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.id">
-  </mat-form-field> -->
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()" class="red">Exit</button>
+  <!-- TODO : If role == admin, display-->
   <button mat-button [mat-dialog-close]="data.id" cdkFocusInitial class="green">Set as returned</button>
 </div>

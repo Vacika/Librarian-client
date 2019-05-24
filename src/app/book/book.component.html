@@ -1,4 +1,4 @@
-<div *ngIf="!errorFetching" class="container">
+<div *ngIf="!errorFetching && book" class="container">
 
   <div class='media-left'>
     <img mat-card-image src="{{book.cover}}">
@@ -22,10 +22,10 @@
       <p *ngIf='statusLeasing' [ngClass]="{'success': leaseSuccessful,'failed':!leaseSuccessful}">{{statusLeasing}}</p>
     </div>
   </div>
-<!-- If fetching similarBooks didnt fail and there similar books >0 then display -->
-  <div class='media-right' *ngIf='!errorSimilarFetching && similarBooks.length>0'>
+  <!-- If fetching similarBooks didnt fail and there similar books >0 then display -->
+  <div class='media-right' *ngIf='!errorSimilarFetching && similarBooks'>
     <h6>You might also like these books</h6>
-    <div class='similar-books' *ngIf='similarBooks'>
+    <div class='similar-books'>
       <mat-card class="example-card object-fit_scale-down" *ngFor="let b of similarBooks" (click)='fetchBookById(b.id)'>
         <img class="similar-book-img" mat-card-image src="{{b.cover}}" alt="Book Cover">
         <mat-card-header>
@@ -36,9 +36,6 @@
     </div>
   </div>
 
-  <div class='media-right failed' *ngIf='errorSimilarFetching'>
-    <p>Error happened while fetching books similar to this one, refreshing may fix this problem.</p>
-  </div>
 </div>
 <div *ngIf="errorFetching">
   <p class='failed'>Error happened while fetching book data, please refresh and try again...</p>
