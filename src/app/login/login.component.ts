@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
     authenticationFailed=false;
     username:string;
     password:string;
+    tryLogin=false;
     constructor(private service: AuthenticationService, private route:Router) { }
 
     ngOnInit() {
@@ -21,16 +22,20 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         // const credentials = this.credentialsForm.value;
+        this.tryLogin=true;
         this.service.login(this.username, this.password)
             .subscribe({
                 next: user=>{
                     this.user=user;
                     console.log("USER:",this.user);
+                    this.tryLogin=false;
                     this.route.navigate(['/home']);
                 },
                 error: err => {
                     this.authenticationFailed=true;
+                    this.tryLogin=false;
                     console.error("Authentication failed, error:",err)
+
                 }
             });
     }
