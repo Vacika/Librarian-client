@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPanelComponent implements OnInit {
     currentDate = new Date();
-
     constructor() { }
 
     ngOnInit() {

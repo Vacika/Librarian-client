@@ -11,29 +11,28 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
     user:User;
-    authenticationFailed=false;
     username:string;
     password:string;
-    tryLogin=false;
+    validating=false;
+    authenticationFailed=false;
     constructor(private service: AuthenticationService, private route:Router) { }
 
     ngOnInit() {
     }
 
     onSubmit() {
-        // const credentials = this.credentialsForm.value;
-        this.tryLogin=true;
+        this.validating=true;
         this.service.login(this.username, this.password)
             .subscribe({
                 next: user=>{
                     this.user=user;
                     console.log("USER:",this.user);
-                    this.tryLogin=false;
+                    this.validating=false;
                     this.route.navigate(['/home']);
                 },
                 error: err => {
                     this.authenticationFailed=true;
-                    this.tryLogin=false;
+                    this.validating=false;
                     console.error("Authentication failed, error:",err)
 
                 }
