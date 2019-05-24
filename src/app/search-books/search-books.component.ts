@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CatalogBook } from '../models/CatalogBook';
+import { CatalogBook } from '../_models/CatalogBook';
 import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators'
 import { FormControl } from '@angular/forms';
-import { CatalogService } from '../services/catalog.service';
+import { CatalogService } from '../_services/catalog.service';
 
 @Component({
     selector: 'app-search-books',

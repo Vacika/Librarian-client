@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CatalogBook } from '../models/CatalogBook';
+import { CatalogBook } from '../_models/CatalogBook';
 
 @Component({
     selector: 'app-book-snippet',

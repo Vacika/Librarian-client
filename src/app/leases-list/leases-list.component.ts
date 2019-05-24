@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { LeaseService } from '../services/lease.service';
+import { LeaseService } from '../_services/lease.service';
 import { MatDialog } from '@angular/material';
-import { DialogLeaseDetailComponent } from '../modal-dialogs/dialog-lease-details/dialog-lease-details.component';
-import { Lease } from '../models/Lease';
+import { DialogLeaseDetailComponent } from '../_dialogs/dialog-lease-details/dialog-lease-details.component';
+import { Lease } from '../_models/Lease';
 
 @Component({
     selector: 'app-leases-list',

@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Lease } from '../../models/Lease';
-import { CatalogBook } from '../../models/CatalogBook';
+import { Lease } from '../../_models/Lease';
+import { CatalogBook } from '../../_models/CatalogBook';
 
 @Component({
   selector: 'app-dialog-make-lease',

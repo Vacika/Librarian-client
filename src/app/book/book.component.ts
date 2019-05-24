@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { LeaseService } from "../services/lease.service";
-import { CatalogService } from '../services/catalog.service';
-import { DialogMakeLeaseComponent } from '../modal-dialogs/dialog-make-lease/dialog-make-lease.component';
+import { LeaseService } from "../_services/lease.service";
+import { CatalogService } from '../_services/catalog.service';
+import { DialogMakeLeaseComponent } from '../_dialogs/dialog-make-lease/dialog-make-lease.component';
 import { MatDialog } from '@angular/material';
-import {CatalogBook} from '../models/CatalogBook';
+import {CatalogBook} from '../_models/CatalogBook';
 @Component({
     selector: 'app-book',
     templateUrl: './book.component.html',

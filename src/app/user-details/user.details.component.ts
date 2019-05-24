@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Lease } from '../models/Lease';
-import { User } from '../models/User';
-import { LeaseService } from '../services/lease.service';
+import { Lease } from '../_models/Lease';
+import { User } from '../_models/User';
+import { LeaseService } from '../_services/lease.service';
 
 @Component({
     selector: 'app-user-details',
@@ -15,17 +15,17 @@ export class UserDetailsComponent implements OnInit {
     currentDate = new Date();
     errorFetchingLeases = false;
 
-    constructor(private leaseService: LeaseService) {}
+    constructor(private leaseService: LeaseService) { }
 
     ngOnInit() {
         this.getUserLeases();
     }
 
-    getUserLeases() :void{
+    getUserLeases(): void {
 
         // this.leaseService.searchLeasesByUsername(this.user.email)
         this.leaseService.searchLeasesByUsername("jsnow@jsnow.com")
-        .subscribe(
+            .subscribe(
                 resultArray => this.userLeases = resultArray,
                 error => { ///TODO: Visualise this error
                     this.errorFetchingLeases = true;

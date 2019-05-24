@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CatalogService } from '../services/catalog.service';
-import {CatalogBook} from '../models/CatalogBook';
+import { CatalogService } from '../_services/catalog.service';
+import {CatalogBook} from '../_models/CatalogBook';
 
 @Component({
     selector: 'app-popular-books',
