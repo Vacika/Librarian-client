@@ -11,20 +11,17 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
     user:User;
-    authenticated=true;
-    credentialsForm = new FormGroup({
-        username: new FormControl(''),
-        password: new FormControl(''),
-    });
-
+    authenticationFailed=false;
+    username:string;
+    password:string;
     constructor(private service: AuthenticationService, private route:Router) { }
 
     ngOnInit() {
     }
 
     onSubmit() {
-        const credentials = this.credentialsForm.value;
-        this.service.login(credentials.username, credentials.password)
+        // const credentials = this.credentialsForm.value;
+        this.service.login(this.username, this.password)
             .subscribe({
                 next: user=>{
                     this.user=user;
@@ -32,7 +29,7 @@ export class LoginComponent implements OnInit {
                     this.route.navigate(['/home']);
                 },
                 error: err => {
-                    this.authenticated=false;
+                    this.authenticationFailed=true;
                     console.error("Authentication failed, error:",err)
                 }
             });
