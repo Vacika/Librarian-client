@@ -53,7 +53,7 @@
     </mat-card-actions>
 
   </mat-card>
-  <div class='error-container' *ngIf='authenticationFailed'>
-    <p>Your login credentials were wrong, try again!</p>
+  <div class='error-container' >
+    <p *ngIf="errorMessage">{{errorMessage}}</p>
   </div>
 </div>

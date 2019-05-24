@@ -10,32 +10,29 @@ import { Router } from '@angular/router';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    user:User;
-    username:string;
-    password:string;
-    validating=false;
-    authenticationFailed=false;
-    constructor(private service: AuthenticationService, private route:Router) { }
+    user: User;
+    username: string;
+    password: string;
+    validating = false;
+    errorMessage: string;
+    constructor(private service: AuthenticationService, private route: Router) { }
 
     ngOnInit() {
     }
 
     onSubmit() {
-        this.validating=true;
-        this.service.login(this.username, this.password)
-            .subscribe({
-                next: user=>{
-                    this.user=user;
-                    console.log("USER:",this.user);
-                    this.validating=false;
-                    this.route.navigate(['/home']);
+        this.validating = true;
+        this.service.login(this.username, this.password).subscribe({
+                next: user => {
+                    localStorage.setItem('currentUser', JSON.stringify(user)),
+                    this.validating=false,
+                    this.route.navigate(['/home'])
                 },
-                error: err => {
-                    this.authenticationFailed=true;
+                error: _ => {
+                    this.errorMessage = 'Invalid credentials,try again..',
                     this.validating=false;
-                    console.error("Authentication failed, error:",err)
-
                 }
-            });
+            })
+
     }
 }

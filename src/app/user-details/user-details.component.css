@@ -4,7 +4,8 @@ h3, mat-checkbox{
 .header
 {
   display:flex;
+  flex-direction:column;
 }
 mat-checkbox{
-  align-self:center;
+  padding-bottom:10px;
 }
