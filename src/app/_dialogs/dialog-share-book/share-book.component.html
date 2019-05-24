@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Share</h1>
+
+<div mat-dialog-content>
+  <p>Sharing url: <input #userInput value="{{data.url}}">
+    <i matTooltip="Copy to clipboard" class='material-icons' (click)="copyText(userInput)">file_copy</i>
+  </p>
+  <button mat-stroked-button class='close' (click)="onNoClick()">Close</button>
+
+</div>

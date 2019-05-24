@@ -16,7 +16,7 @@
 
       <span id='is-available'
         [ngClass]="{'success': book.available,'failed': !book.available}">{{book.available ? 'Available': 'Not available..'}}</span>
-      <button mat-button>SHARE</button>
+      <button mat-button (click)='openShareDialog()'>SHARE</button>
     </div>
     <div class='lease-info'>
       <p *ngIf='statusLeasing' [ngClass]="{'success': leaseSuccessful,'failed':!leaseSuccessful}">{{statusLeasing}}</p>

@@ -4,7 +4,9 @@ import { LeaseService } from "../_services/lease.service";
 import { CatalogService } from '../_services/catalog.service';
 import { DialogMakeLeaseComponent } from '../_dialogs/dialog-make-lease/dialog-make-lease.component';
 import { MatDialog } from '@angular/material';
-import {CatalogBook} from '../_models/CatalogBook';
+import { CatalogBook } from '../_models/CatalogBook';
+import { ShareBookDialogComponent } from '../_dialogs/dialog-share-book/share-book.component';
+import { map } from 'rxjs/operators';
 @Component({
     selector: 'app-book',
     templateUrl: './book.component.html',
@@ -38,15 +40,15 @@ export class BookComponent implements OnInit {
             .subscribe(
                 books => this.similarBooks = books,
                 error => {
-                    this.similarBooks=null;
-                    console.error("Failed to fetch books similar to this, error:",error);
+                    this.similarBooks = null;
+                    console.error("Failed to fetch books similar to this, error:", error);
                 }
             );
         window.history.replaceState({}, '', `/book/${this.bookId}`); // change route path
 
     }
 
-    openDialog(book: CatalogBook) {
+    openDialog(book: CatalogBook): void {
         const dialogWindow = this.dialog.open(DialogMakeLeaseComponent, {
             data: {
                 id: book.id,
@@ -70,4 +72,13 @@ export class BookComponent implements OnInit {
                 : false;
         });
     }
+    openShareDialog(): void {
+        const dialogWindow = this.dialog.open(ShareBookDialogComponent, {
+            data: {
+                url: `http://localhost:4200/book/${this.bookId}`
+            }
+        });
+    }
+
 }
+

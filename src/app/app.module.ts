@@ -20,6 +20,7 @@ import { SearchLeasesComponent } from './search-leases/search-leases.component';
 import { LoginComponent } from './login/login.component';
 import { UserDetailsComponent } from './user-details/user.details.component';
 import { DialogLeaseDetailComponent } from './_dialogs/dialog-lease-details/dialog-lease-details.component';
+import { ShareBookDialogComponent } from './_dialogs/dialog-share-book/share-book.component';
 
 const appRoutes: Routes = [
     { path: 'book/:id', component: BookComponent },
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
         SearchLeasesComponent,
         LoginComponent,
         UserDetailsComponent,
+        ShareBookDialogComponent
     ],
     imports: [
         FormsModule,
@@ -65,6 +67,7 @@ const appRoutes: Routes = [
     entryComponents: [
         DialogLeaseDetailComponent,
         DialogMakeLeaseComponent,
+        ShareBookDialogComponent
     ],
     providers: [],
     bootstrap: [AppComponent]
