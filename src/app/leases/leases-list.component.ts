@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LeaseService } from '../_services/lease.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, PageEvent} from '@angular/material';
 import { DialogLeaseDetailComponent } from '../_dialogs/dialog-lease-details/dialog-lease-details.component';
 import { Lease } from '../_models/Lease';
 
@@ -15,7 +15,6 @@ export class LeasesListComponent implements OnInit {
     @Input() leases: Lease[]
     @Input() hideFinishedLeases: boolean;
     currentDate = new Date();
-
     constructor(private service: LeaseService, private dialog: MatDialog) { }
 
     ngOnInit() {

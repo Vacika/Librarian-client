@@ -36,7 +36,9 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{
         'red': isLeaseExpired(row.dueTime),
         'green':row.returned }" [hidden]="row.returned && hideFinishedLeases" (click)="openDialog(row)"></tr>
-  </table>
+
+      </table>
+      <mat-paginator [length]="100" [pageSize]="2" [pageSizeOptions]="[5, 10, 25, 100]"> </mat-paginator>
 
   <div class='information'>
     <span class='bg bg-red'></span> <span class='description'>Not returned & expired</span>

@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BookComponent } from './book/book.component';
-import { LeasesListComponent } from './leases-list/leases-list.component';
+import { LeasesListComponent } from './leases/leases-list.component';
 import { SearchComponent } from './search-books/search-books.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,7 +18,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { DialogMakeLeaseComponent } from './_dialogs/dialog-make-lease/dialog-make-lease.component';
 import { SearchLeasesComponent } from './search-leases/search-leases.component';
 import { LoginComponent } from './login/login.component';
-import { UserDetailsComponent } from './user-details/user.details.component';
+import { UserDetailsComponent } from './user-panel/user.details.component';
 import { DialogLeaseDetailComponent } from './_dialogs/dialog-lease-details/dialog-lease-details.component';
 import { ShareBookDialogComponent } from './_dialogs/dialog-share-book/share-book.component';
 
@@ -60,9 +60,10 @@ const appRoutes: Routes = [
         BrowserModule,
         HttpClientModule,
         RouterModule.forRoot(
-            appRoutes),
+            appRoutes,{onSameUrlNavigation: 'reload'}),
         BrowserAnimationsModule,
-        MaterialModule
+        MaterialModule,
+
     ],
     entryComponents: [
         DialogLeaseDetailComponent,

@@ -6,12 +6,12 @@ import { DialogMakeLeaseComponent } from '../_dialogs/dialog-make-lease/dialog-m
 import { MatDialog } from '@angular/material';
 import { CatalogBook } from '../_models/CatalogBook';
 import { ShareBookDialogComponent } from '../_dialogs/dialog-share-book/share-book.component';
-import { map } from 'rxjs/operators';
 @Component({
     selector: 'app-book',
     templateUrl: './book.component.html',
     styleUrls: ['./book.component.css']
 })
+//DODADI USER ZA DA ZNAES DALI DA DOZVOLIS LEASE
 export class BookComponent implements OnInit {
     bookId: number;
     book: CatalogBook;

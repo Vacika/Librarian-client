@@ -3,14 +3,14 @@
   <div>
 
     <!--TODO: Add ngIf role=admin -> admin panel else -> yourleases -->
-      <a mat-button routerLink="/adminpanel" color="accent">
-        <i class="material-icons">format_list_bulleted</i>
-        <span id="sign-out">ADMIN PANEL</span>
-      </a>
-      <a mat-button routerLink="/userdetails" color="accent">
-        <i class="material-icons">format_list_bulleted</i>
-        <span id="sign-out">YOUR LEASES</span>
-      </a>
+    <a mat-button routerLink="/adminpanel" color="accent">
+      <i class="material-icons">format_list_bulleted</i>
+      <span id="sign-out">ADMIN PANEL</span>
+    </a>
+    <a mat-button routerLink="/userdetails" color="accent">
+      <i class="material-icons">format_list_bulleted</i>
+      <span id="sign-out">YOUR LEASES</span>
+    </a>
     <a mat-button routerLink="/" color="accent">
       <i class="material-icons">home</i>
       <span id="sign-in">HOME</span>
@@ -20,11 +20,32 @@
       <i class="material-icons">contact_support</i>
       <span id="sign-in">CONTACT</span>
     </a>
-
+    <!--
     <a mat-button routerLink="/login" color="accent">
       <i class="material-icons">account_circle</i>
       <span id="sign-in">SIGN IN</span>
-    </a>
+    </a> -->
+    <a mat-button [matMenuTriggerFor]="menu" color="accent"> <i class="material-icons">account_circle</i>
+      LOGIN</a>
+
+    <mat-menu #menu="matMenu">
+      <form class="login-form" (click)="stopPropagation($event)">
+        <mat-form-field class="login-full-width">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Your username here" value="" [(ngModel)]="username" name="username" required>
+        </mat-form-field>
+
+        <mat-form-field class="login-full-width">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput placeholder="Your password here"  [(ngModel)]="password" name="password" required>
+        </mat-form-field>
+        <button mat-button-submit (click)='login()'>Login</button>
+      </form>
+      <div class='red' *ngIf='invalidLogin'>
+          <span>Invalid credentials, try again..</span>
+      </div>
+    </mat-menu>
+
 
     <a mat-button (click)='logout()' color="accent">
       <i class="material-icons">subdirectory_arrow_right</i>

@@ -8,6 +8,7 @@ import { LeaseService } from '../_services/lease.service';
     templateUrl: './user-details.component.html',
     styleUrls: ['./user-details.component.css']
 })
+//USER ZEMI
 export class UserDetailsComponent implements OnInit {
     userLeases: Lease[];
     // @Input() user: User;
