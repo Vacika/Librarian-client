@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CatalogService } from '../_services/catalog.service';
-import {CatalogBook} from '../_models/CatalogBook';
+import { CatalogBook } from '../_models/CatalogBook';
+import { ApiService } from '../_services/api.service';
 
 @Component({
     selector: 'app-popular-books',
@@ -8,18 +8,19 @@ import {CatalogBook} from '../_models/CatalogBook';
     styleUrls: ['./popular-books.component.css']
 })
 export class PopularBooksComponent implements OnInit {
+
     popularBooks: CatalogBook[];
-    constructor(private service: CatalogService) { }
+
+    constructor(private apiService: ApiService) { }
 
     ngOnInit() {
         this.fetchPopularBooks()
     }
-    fetchPopularBooks():void
-    {
-        this.service.getPopularCatalogBooks().subscribe(
+
+    fetchPopularBooks() {
+        this.apiService.getPopularCatalogBooks().subscribe(
             books => this.popularBooks = books,
             error => console.error("Failed fetching popular books from the api, error data:", error)
         )
     }
-
 }

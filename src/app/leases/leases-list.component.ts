@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { LeaseService } from '../_services/lease.service';
 import { MatDialog, PageEvent} from '@angular/material';
 import { DialogLeaseDetailComponent } from '../_dialogs/dialog-lease-details/dialog-lease-details.component';
 import { Lease } from '../_models/Lease';
+import { ApiService } from '../_services/api.service';
 
 @Component({
     selector: 'app-leases-list',
@@ -11,11 +11,12 @@ import { Lease } from '../_models/Lease';
 
 })
 export class LeasesListComponent implements OnInit {
+
     displayedColumns: string[] = ['id', 'user', 'timeOfLease', 'dueTime', 'inventoryBook', 'returned'];
     @Input() leases: Lease[]
     @Input() hideFinishedLeases: boolean;
     currentDate = new Date();
-    constructor(private service: LeaseService, private dialog: MatDialog) { }
+    constructor(private apiService: ApiService, private dialog: MatDialog) { }
 
     ngOnInit() {
     }
@@ -45,7 +46,7 @@ export class LeasesListComponent implements OnInit {
         //       3.Next we update our front-end leases array, where we update the 'returned' attribute of the specific lease to 'true'
 
         dialogWindow.afterClosed().subscribe(dialogResult => {
-            dialogResult ? this.service.updateLeaseReturned(dialogResult)
+            dialogResult ? this.apiService.updateLeaseReturned(dialogResult)
                 .subscribe(() => this.leases.find(lease => lease.id = dialogResult).returned = true)
                 : false
         });

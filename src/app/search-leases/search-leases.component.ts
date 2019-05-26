@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Lease } from '../_models/Lease';
-import { LeaseService } from '../_services/lease.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, tap, switchMap } from 'rxjs/operators';
+import { ApiService } from '../_services/api.service';
 
 @Component({
     selector: 'app-search-leases',
@@ -10,14 +10,15 @@ import { debounceTime, distinctUntilChanged, tap, switchMap } from 'rxjs/operato
     styleUrls: ['./search-leases.component.css']
 })
 export class SearchLeasesComponent implements OnInit {
+
     searchLeases: Lease[]
-    allLeases:Lease[]
+    allLeases: Lease[]
     leasesFetchFailed = false
     searchInput = new FormControl()
-    hideFinishedLeases:boolean;
+    hideFinishedLeases: boolean;
     term = '';
 
-    constructor(private service: LeaseService) { }
+    constructor(private apiService: ApiService) { }
 
     ngOnInit() {
         this.fetchAllLeases();
@@ -27,19 +28,20 @@ export class SearchLeasesComponent implements OnInit {
             distinctUntilChanged(),
             tap(x => this.term = x),
             switchMap(term => {
-                return this.service.searchLeasesByUsername(term);
+                return this.apiService.searchLeasesByUsername(term);
             }))
             .subscribe(
                 resultArray => this.searchLeases = resultArray,
                 error => {
                     this.leasesFetchFailed = true,
-                    console.error("Something failed while fetching... Error details:", error)
+                        console.error("Something failed while fetching... Error details:", error)
                 }
             );
 
     }
+
     fetchAllLeases() {
-        this.service.getAllLeases().subscribe(
+        this.apiService.getAllLeases().subscribe(
             resultArray => {
                 this.allLeases = resultArray
             },

@@ -14,5 +14,4 @@ export class BookSnippetListComponent implements OnInit {
 
     ngOnInit() {
     }
-
 }

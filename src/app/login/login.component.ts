@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
     user: User;
     username: string;
     password: string;
@@ -23,16 +24,16 @@ export class LoginComponent implements OnInit {
     onSubmit() {
         this.validating = true;
         this.service.login(this.username, this.password).subscribe({
-                next: user => {
-                    localStorage.setItem('currentUser', JSON.stringify(user)),
-                    this.validating=false,
+            next: user => {
+                localStorage.setItem('currentUser', JSON.stringify(user)),
+                    this.validating = false,
                     this.route.navigate(['/home'])
-                },
-                error: _ => {
-                    this.errorMessage = 'Invalid credentials,try again..',
-                    this.validating=false;
-                }
-            })
+            },
+            error: _ => {
+                this.errorMessage = 'Invalid credentials,try again..',
+                    this.validating = false;
+            }
+        })
 
     }
 }
