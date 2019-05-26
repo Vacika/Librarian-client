@@ -1,0 +1,23 @@
+.navbar {
+  justify-content: space-between;
+  cursor: default;
+}
+
+span {
+  padding-top: 2px;
+  padding-left: 6px;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+/*.login-form{*/
+/*  display:flex;*/
+/*  flex-direction:column;*/
+/*  padding:10px 10px 10px 10px;*/
+/*}*/
+
+.red {
+  color: red;
+}

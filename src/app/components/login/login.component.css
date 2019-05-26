@@ -1,0 +1,30 @@
+.error-container {
+  color: red;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  height: 400px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 80px 80px 80px 80px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.controls:first-child {
+}

@@ -1,0 +1,7 @@
+<div class="mat-headline">
+  <p>Most popular</p>
+  <div class="container">
+    <mat-spinner class="spinner" *ngIf="!popularBooks" color="accent"></mat-spinner>
+    <app-book-snippet-list [books]="popularBooks" *ngIf="popularBooks"></app-book-snippet-list>
+  </div>
+</div>
