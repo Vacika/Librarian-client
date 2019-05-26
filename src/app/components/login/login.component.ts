@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {AuthenticationService} from '../../services/authentication.service';
-import {User} from '../../domain/User';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,34 +10,24 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-    authCredentials = new FormGroup({
-        email: new FormControl(''),
+    credentials = new FormGroup({
+        username: new FormControl(''),
         password: new FormControl(''),
     });
 
-    user: User;
-    validating = false;
-    errorMessage: string;
-
-    constructor(private service: AuthenticationService, private route: Router) {
+    constructor(private authService: AuthenticationService, private route: Router) {
     }
 
     ngOnInit() {
     }
 
     onSubmit() {
-        console.log('[LoginComponent] onSubmit()');
-        // this.validating = true;
-        // this.service.login(this.username, this.password).subscribe({
-        //     next: user => {
-        //         localStorage.setItem('currentUser', JSON.stringify(user)),
-        //             this.validating = false,
-        //             this.route.navigate(['/home']);
-        //     },
-        //     error: _ => {
-        //         this.errorMessage = 'Invalid credentials, try again ...',
-        //             this.validating = false;
-        //     }
-        // });
+        console.log('LoginComponent#onSubmit');
+        let c = this.credentials.value;
+
+        this.authService.login(c.username, c.password).subscribe({
+            next: () => this.route.navigateByUrl('/home'),
+            error: error => console.log(`Error occurred: ${error.message}`)
+        });
     }
 }

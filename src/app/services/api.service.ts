@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Lease } from '../domain/Lease';
 import { CatalogBook } from '../domain/CatalogBook';
-import { delay } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'

@@ -1,57 +1,32 @@
 <mat-toolbar class="navbar">
   <img src="https://i.ibb.co/GCpSP0B/4354312.png" routerLink="/" class='logo' alt="Logo">
-  <div>
 
-    <!--TODO: Add ngIf role=admin -> admin panel else -> yourleases -->
-<!--    <a mat-button routerLink="/adminpanel" color="accent">-->
-<!--      <i class="material-icons">format_list_bulleted</i>-->
-<!--      <span class="sign-out">ADMIN PANEL</span>-->
-<!--    </a>-->
-<!--    <a mat-button routerLink="/userdetails" color="accent">-->
-<!--      <i class="material-icons">format_list_bulleted</i>-->
-<!--      <span class="sign-out">YOUR LEASES</span>-->
-<!--    </a>-->
+  <div>
     <a mat-button routerLink="/" color="accent">
       <i class="material-icons">home</i>
       <span class="sign-in">HOME</span>
     </a>
 
-<!--    <a mat-button routerLink="/" color="accent">-->
-<!--      <i class="material-icons">contact_support</i>-->
-<!--      <span class="sign-in">CONTACT</span>-->
-<!--    </a>-->
-    <!--
-    <a mat-button routerLink="/login" color="accent">
-      <i class="material-icons">account_circle</i>
-      <span id="sign-in">SIGN IN</span>
-    </a> -->
-    <a mat-button routerLink="/login" color="accent">
+    <a mat-button routerLink="/adminpanel" color="accent"
+       color="accent" *ngIf="isAuthenticated && user.authorities[0].authority === 'ROLE_ADMIN'">
+      <i class="material-icons">format_list_bulleted</i>
+      <span class="sign-out">ADMIN PANEL</span>
+    </a>
+
+    <a mat-button routerLink="/userdetails"
+       color="accent" *ngIf="isAuthenticated && user.authorities[0].authority === 'ROLE_USER'">
+      <i class="material-icons">format_list_bulleted</i>
+      <span class="sign-out">MY LEASES</span>
+    </a>
+
+    <a mat-button routerLink="/login" color="accent" *ngIf="!isAuthenticated">
       <i class="material-icons">account_circle</i>
       <span class="sign-in">SIGN IN</span>
     </a>
 
-    <!--    <mat-menu #menu="matMenu">-->
-    <!--      <form class="login-form" (click)="stopPropagation($event)">-->
-    <!--        <mat-form-field class="login-full-width">-->
-    <!--          <mat-label>Username</mat-label>-->
-    <!--          <input matInput placeholder="Your username here" value="" [(ngModel)]="username" name="username" required>-->
-    <!--        </mat-form-field>-->
-
-    <!--        <mat-form-field class="login-full-width">-->
-    <!--          <mat-label>Password</mat-label>-->
-    <!--          <input type="password" matInput placeholder="Your password here"  [(ngModel)]="password" name="password"-->
-    <!--                 required>-->
-    <!--        </mat-form-field>-->
-    <!--        <button mat-button-submit (click)='login()'>Login</button>-->
-    <!--      </form>-->
-    <!--      <div class='red' *ngIf='invalidLogin'>-->
-    <!--        <span>Invalid credentials, try again..</span>-->
-    <!--      </div>-->
-    <!--    </mat-menu>-->
-
-    <!--    <a mat-button (click)='logout()' color="accent">-->
-    <!--      <i class="material-icons">subdirectory_arrow_right</i>-->
-    <!--      <span id="sign-out">SIGN OUT</span>-->
-    <!--    </a>-->
+    <a mat-button color="accent" (click)="onSignOut()" *ngIf="isAuthenticated">
+      <i class="material-icons">subdirectory_arrow_right</i>
+      <span id="sign-out">SIGN OUT</span>
+    </a>
   </div>
 </mat-toolbar>

@@ -13,7 +13,7 @@ import { ApiService } from '../../services/api.service';
 export class LeasesListComponent implements OnInit {
 
     displayedColumns: string[] = ['id', 'user', 'timeOfLease', 'dueTime', 'inventoryBook', 'returned'];
-    @Input() leases: Lease[]
+    @Input() leases: Lease[];
     @Input() hideFinishedLeases: boolean;
     currentDate = new Date();
     constructor(private apiService: ApiService, private dialog: MatDialog) { }
@@ -36,19 +36,19 @@ export class LeasesListComponent implements OnInit {
                 timeOfLease: info.timeOfLease,
                 dueTime: info.dueTime,
                 returned: info.returned
-                //role:userrole
+                // role:userrole
             }
         });
-        //Dialog result = ID of the lease updated if updated, else dialogResult=undefined
+        // Dialog result = ID of the lease updated if updated, else dialogResult=undefined
         // dialogresult? update lease : return false
-        //Logic: 1.If dialogResult is not undefined, then it has ID of updated lease.Else return false
+        // Logic: 1.If dialogResult is not undefined, then it has ID of updated lease.Else return false
         //       2.Next we send a request to back-end to update the lease.
         //       3.Next we update our front-end leases array, where we update the 'returned' attribute of the specific lease to 'true'
 
         dialogWindow.afterClosed().subscribe(dialogResult => {
             dialogResult ? this.apiService.updateLeaseReturned(dialogResult)
                 .subscribe(() => this.leases.find(lease => lease.id = dialogResult).returned = true)
-                : false
+                : false;
         });
     }
 }

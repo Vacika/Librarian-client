@@ -3,7 +3,6 @@ import {AuthenticationService} from '../../services/authentication.service';
 import {User} from '../../domain/User';
 import {Router} from '@angular/router';
 
-// DODADI USER ZA DA ZNAES DALI LOG IN ILI LOG OUT DA NAPRAJS
 @Component({
     selector: 'app-navigation',
     templateUrl: './navigation.component.html',
@@ -11,37 +10,27 @@ import {Router} from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
 
-    username: string;
-    password: string;
-    // invalidLogin: boolean;
+    isAuthenticated = false;
+    user: User;
 
     constructor(private authService: AuthenticationService, private router: Router) {
-        // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     }
 
     ngOnInit() {
+        this.authService.getUser().subscribe({
+            next: user => {
+                this.user = user;
+                this.isAuthenticated = this.user != null;
+            }
+        });
     }
 
-    login() {
+    onSignOut() {
+        this.authService.logout().subscribe({
+            next: () => {
+                this.isAuthenticated = false;
+                this.router.navigateByUrl('/home');
+            }
+        });
     }
-
-    logout() {
-    }
-
-    // STOPS login menu from hiding
-    stopPropagation(event) {
-        event.stopPropagation();
-    }
-
-    // failedLoginProcedure() {
-    //     this.invalidLogin = true;
-    //     this.username = '';
-    //     this.password = '';
-    // }
-
-    // successfulLogin(user: User) {
-    //     // TODO FOR SPASE: MAKE TO REFRESH PAGE(HIDE THE MENU AFTER SUCCESFULL LOGIN!)
-    //     localStorage.setItem('currentUser', JSON.stringify(user));
-    //     this.router.navigate(['/home']);
-    // }
 }

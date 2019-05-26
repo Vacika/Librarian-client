@@ -5,9 +5,9 @@
       <mat-card-title>Sign in</mat-card-title>
     </mat-card-header>
 
-    <form [formGroup]="authCredentials">
+    <form [formGroup]="credentials">
       <mat-form-field class="form-field">
-        <input matInput placeholder="email" formControlName="email" type="text" required>
+        <input matInput placeholder="email" formControlName="username" type="text" required>
       </mat-form-field>
 
       <mat-form-field class="form-field">
@@ -15,7 +15,7 @@
       </mat-form-field>
     </form>
 
-    <!--      <mat-spinner [style.display]="validating? 'inline-block' : 'none'"></mat-spinner>-->
+    <!--<mat-spinner [style.display]="validating? 'inline-block' : 'none'"></mat-spinner>-->
 
     <div class="controls">
       <button mat-button (click)="onSubmit()" color="primary">Create account</button>
@@ -24,6 +24,6 @@
   </div>
 
 </div>
-<!--  <div class='error-container'>-->
-<!--    <p *ngIf="errorMessage">{{errorMessage}}</p>-->
-<!--  </div>-->
+<!--<div class='error-container'>-->
+<!--  <p *ngIf="errorMessage">{{errorMessage}}</p>-->
+<!--</div>-->
