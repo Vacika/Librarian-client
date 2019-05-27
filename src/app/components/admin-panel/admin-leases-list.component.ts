@@ -17,6 +17,7 @@ export class AdminLeasesListComponent implements OnInit {
     leases = new MatTableDataSource<Lease>();
     currentDate = new Date();
     hiddeFinishedLeases: boolean;
+    showOnlyExpired:boolean;
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
 
