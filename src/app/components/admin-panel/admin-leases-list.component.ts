@@ -3,6 +3,7 @@ import { MatDialog, MatTableDataSource, MatPaginator, MatSort, Sort } from '@ang
 import { DialogLeaseDetailComponent } from '../dialogs/dialog-lease-details/dialog-lease-details.component';
 import { Lease } from '../../domain/Lease';
 import { ApiService } from 'src/app/services/api.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
     selector: 'app-admin-leases-list',
@@ -18,14 +19,17 @@ export class AdminLeasesListComponent implements OnInit {
     currentDate = new Date();
     hiddeFinishedLeases: boolean;
     showOnlyExpired:boolean;
+    userRole:string;
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
 
 
 
-    constructor(private apiService: ApiService, private dialog: MatDialog) { }
+    constructor(private apiService: ApiService, private authService:AuthenticationService, private dialog: MatDialog) { }
 
     ngOnInit() {
+        this.authService.user.subscribe(user=>this.userRole=user.authorities[0].authority)
+
         this.leases.filterPredicate = (data: Lease, filter: string) => data.user.email.indexOf(filter) != -1;
 
         this.apiService.getAllLeases().subscribe({
@@ -52,8 +56,8 @@ export class AdminLeasesListComponent implements OnInit {
                 user: info.user.email,
                 timeOfLease: info.timeOfLease,
                 dueTime: info.dueTime,
-                returned: info.returned
-                // role:userrole
+                returned: info.returned,
+                role: this.userRole
             }
         });
         // Dialog result = ID of the lease updated if updated, else dialogResult=undefined
