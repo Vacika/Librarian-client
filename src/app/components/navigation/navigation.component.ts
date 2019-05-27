@@ -29,7 +29,12 @@ export class NavigationComponent implements OnInit {
         this.authService.logout().subscribe({
             next: () => {
                 this.isAuthenticated = false;
-                this.router.navigateByUrl('/home');
+                window.location.href='/home';
+            },
+            error: error=> {
+                this.isAuthenticated = false;
+                window.location.href='/home';
+                console.log('error:',error);
             }
         });
     }

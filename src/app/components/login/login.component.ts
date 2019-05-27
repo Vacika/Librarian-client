@@ -16,9 +16,13 @@ export class LoginComponent implements OnInit {
     });
 
     constructor(private authService: AuthenticationService, private route: Router) {
+
     }
 
     ngOnInit() {
+        this.route.routeReuseStrategy.shouldReuseRoute = function () {
+            return false;
+          };
     }
 
     onSubmit() {
@@ -26,7 +30,7 @@ export class LoginComponent implements OnInit {
         let c = this.credentials.value;
 
         this.authService.login(c.username, c.password).subscribe({
-            next: () => this.route.navigateByUrl('/home'),
+            next: () => window.location.href='/home',
             error: error => console.log(`Error occurred: ${error.message}`)
         });
     }
