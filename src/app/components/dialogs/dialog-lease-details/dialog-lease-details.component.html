@@ -8,6 +8,6 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()" class="red">Exit</button>
-  <!-- TODO : If role == admin, display-->
-  <button mat-button [mat-dialog-close]="data.id" cdkFocusInitial class="green">Set as returned</button>
+
+  <button mat-button *ngIf="userRole=='ROLE_ADMIN'"[mat-dialog-close]="data.id" cdkFocusInitial class="green">Set as returned</button>
 </div>
