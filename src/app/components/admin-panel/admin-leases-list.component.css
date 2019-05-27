@@ -1,0 +1,65 @@
+.leases-container {
+  padding: 0px 20px 20px 20px;
+}
+
+table {
+  width: 100%;
+}
+
+.green {
+  background-color: lightgreen;
+  color: white;
+}
+
+.red {
+  background-color: rgb(226, 80, 80);
+  color: white;
+}
+
+.mat-row {
+  height: 36px;
+}
+
+.mat-row:hover, .mat-row:hover .mat-cell {
+  background-color: lightgray;
+  color: white;
+  cursor: pointer;
+}
+
+.mat-header-cell {
+  font-weight: bolder;
+}
+.mat-checkbox{
+  padding-left:20px;
+}
+
+.information {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+}
+
+.bg {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.bg-red {
+  background-color: red;
+}
+
+.bg-green {
+  background-color: green;
+}
+
+.description {
+  flex-wrap: nowrap;
+  font-size: 10px;
+  align-self: center;
+  padding-right: 20px;
+}
+
+.hide {
+  display: none;
+}

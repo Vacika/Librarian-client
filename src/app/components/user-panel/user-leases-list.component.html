@@ -1,0 +1,45 @@
+<div class='leases-container'>
+  <h3>Your leases</h3>
+  <div class='options-container'>
+    <mat-form-field>
+      <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter by book title">
+    </mat-form-field>
+    <mat-checkbox [(ngModel)]="hideFinishedLeases">Hide finished leases</mat-checkbox>
+  </div>
+
+  <table mat-table [dataSource]="leases" class="mat-elevation-z8" matSort>
+
+    <ng-container matColumnDef="inventoryBook">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Book </th>
+      <td mat-cell *matCellDef="let lease"> {{lease.inventoryBook.catalogBook.title}} </td>
+    </ng-container>
+    <ng-container matColumnDef="timeOfLease">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Time of lease </th>
+      <td mat-cell *matCellDef="let lease"> {{lease.timeOfLease  | date:'dd-MMM yyyy   HH:mm:ss'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dueTime">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Due time </th>
+      <td mat-cell *matCellDef="let lease"> {{lease.dueTime  | date:'dd-MMM yyyy   HH:mm:ss'}} </td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="returned">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Returned </th>
+      <td mat-cell *matCellDef="let lease">{{lease.returned ? 'Yes' : 'No'}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{
+        'red': isLeaseExpired(row.dueTime),
+        'green':row.returned }" [hidden]="row.returned && hideFinishedLeases" (click)="openDialog(row)"></tr>
+
+  </table>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"> </mat-paginator>
+
+  <div class='information'>
+    <span class='bg bg-red'></span> <span class='description'>Not returned & expired</span>
+    <span class='bg bg-green'></span> <span class='description'>Returned in time</span>
+  </div>
+</div>

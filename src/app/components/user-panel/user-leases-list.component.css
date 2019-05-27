@@ -60,3 +60,9 @@ table {
 .hide {
   display: none;
 }
+.mat-checkbox{
+  padding-left:30px;
+}
+.options-container{
+  padding-left:7px;
+}

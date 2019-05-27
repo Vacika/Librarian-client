@@ -1,26 +1,42 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MatDialog, PageEvent} from '@angular/material';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { DialogLeaseDetailComponent } from '../dialogs/dialog-lease-details/dialog-lease-details.component';
 import { Lease } from '../../domain/Lease';
-import { ApiService } from '../../services/api.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-    selector: 'app-leases-list',
-    templateUrl: './leases-list.component.html',
-    styleUrls: ['./leases-list.component.css']
+    selector: 'app-admin-leases-list',
+    templateUrl: './admin-leases-list.component.html',
+    styleUrls: ['./admin-leases-list.component.css']
 
 })
-export class LeasesListComponent implements OnInit {
+//userLeases
+export class AdminLeasesListComponent implements OnInit {
 
-    displayedColumns: string[] = ['id', 'user', 'timeOfLease', 'dueTime', 'inventoryBook', 'returned'];
-    @Input() leases: Lease[];
-    @Input() hideFinishedLeases: boolean;
+    displayedColumns: string[] = ['email', 'timeOfLease', 'dueTime', 'inventoryBook', 'returned'];
+    leases = new MatTableDataSource<Lease>();
     currentDate = new Date();
+    hiddeFinishedLeases: boolean;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
+
+
+
     constructor(private apiService: ApiService, private dialog: MatDialog) { }
 
     ngOnInit() {
-    }
+        this.leases.filterPredicate = (data: Lease, filter: string) => data.user.email.indexOf(filter) != -1;
 
+        this.apiService.getAllLeases().subscribe({
+            next: l => {
+                this.leases.data = l as Lease[];
+                this.leases.paginator = this.paginator;
+                this.leases.sort = this.sort;
+            },
+            error: error => console.log(`Error occurred: ${error.message}`)
+        });
+
+    }
     isLeaseExpired(dueTime: string): boolean {
         return this.currentDate.getTime() > Date.parse(dueTime);
     }
@@ -47,9 +63,13 @@ export class LeasesListComponent implements OnInit {
 
         dialogWindow.afterClosed().subscribe(dialogResult => {
             dialogResult ? this.apiService.updateLeaseReturned(dialogResult)
-                .subscribe(() => this.leases.find(lease => lease.id = dialogResult).returned = true)
+                .subscribe(() => this.leases.data.find(lease => lease.id = dialogResult).returned = true)
                 : false;
         });
+    }
+
+    public doFilter(filterValue: string) {
+        this.leases.filter = filterValue.trim().toLowerCase();
     }
 }
 

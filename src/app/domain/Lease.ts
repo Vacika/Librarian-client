@@ -1,4 +1,5 @@
 import { InventoryBook } from './IntentoryBook';
+import { User } from './User';
 
 export interface Lease {
     id: number;
@@ -6,5 +7,5 @@ export interface Lease {
     dueTime: string;
     returned: boolean;
     inventoryBook: InventoryBook;
-    user: number;
+    user: User;
 }
