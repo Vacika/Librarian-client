@@ -9,7 +9,7 @@
 
 
   </div>
-  <table mat-table [dataSource]="leases" class="mat-elevation-z8" matSort>
+  <table mat-table [dataSource]="leases" class="mat-elevation-z8" matSort  (matSortChange)="onSortData($event)">
 
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
@@ -26,8 +26,8 @@
       <td mat-cell *matCellDef="let lease"> {{lease.dueTime  | date:'dd-MMM yyyy   HH:mm:ss'}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="inventoryBook">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Book </th>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Book title </th>
       <td mat-cell *matCellDef="let lease"> {{lease.inventoryBook.catalogBook.title}} </td>
     </ng-container>
 

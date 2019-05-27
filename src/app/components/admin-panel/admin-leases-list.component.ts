@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatDialog, MatTableDataSource, MatPaginator, MatSort, Sort } from '@angular/material';
 import { DialogLeaseDetailComponent } from '../dialogs/dialog-lease-details/dialog-lease-details.component';
 import { Lease } from '../../domain/Lease';
 import { ApiService } from 'src/app/services/api.service';
@@ -13,7 +13,7 @@ import { ApiService } from 'src/app/services/api.service';
 //userLeases
 export class AdminLeasesListComponent implements OnInit {
 
-    displayedColumns: string[] = ['email', 'timeOfLease', 'dueTime', 'inventoryBook', 'returned'];
+    displayedColumns: string[] = ['email', 'timeOfLease', 'dueTime', 'title', 'returned'];
     leases = new MatTableDataSource<Lease>();
     currentDate = new Date();
     hiddeFinishedLeases: boolean;
@@ -70,6 +70,24 @@ export class AdminLeasesListComponent implements OnInit {
 
     public doFilter(filterValue: string) {
         this.leases.filter = filterValue.trim().toLowerCase();
+    }
+
+    onSortData(sort: Sort) {
+        let data = this.leases.data;
+        if (sort.active && sort.direction !== '') {
+            data = data.sort((a: Lease, b: Lease) => {
+                const isAsc = sort.direction === 'asc';
+                switch (sort.active) {
+                    case 'title': return this.compare(a.inventoryBook.catalogBook.title, b.inventoryBook.catalogBook.title, isAsc);
+                    case 'email': return this.compare(a.user.email,b.user.email,isAsc);
+                    default: return 0;
+                }
+            })
+        }
+    }
+    //method for comparing two strings, returns 0/-1/1 depending on if Asc/Desc
+    private compare(a: string, b: string, isAsc: boolean) {
+        return (a > b ? -1 : 1) * (isAsc ? 1 : -1);
     }
 }
 

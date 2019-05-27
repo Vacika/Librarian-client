@@ -7,9 +7,9 @@
     <mat-checkbox [(ngModel)]="hideFinishedLeases">Hide finished leases</mat-checkbox>
   </div>
 
-  <table mat-table [dataSource]="leases" class="mat-elevation-z8" matSort>
+  <table mat-table [dataSource]="leases" class="mat-elevation-z8" matSort (matSortChange)="onSortData($event)">
 
-    <ng-container matColumnDef="inventoryBook">
+    <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Book </th>
       <td mat-cell *matCellDef="let lease"> {{lease.inventoryBook.catalogBook.title}} </td>
     </ng-container>
