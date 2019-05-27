@@ -73,7 +73,7 @@ export class UserLeasesListComponent implements OnInit {
         this.leases.filter = filterValue.toLowerCase();
     }
 
-    //customSort
+    //customSortFunction
     onSortData(sort: Sort) {
         let data = this.leases.data;
         if (sort.active && sort.direction !== '') {

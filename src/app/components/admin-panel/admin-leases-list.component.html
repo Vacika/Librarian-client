@@ -40,8 +40,8 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{
-        'red': isLeaseExpired(row.dueTime),
-        'green':row.returned }" [hidden]="row.returned && hideFinishedLeases || showOnlyExpired && !isLeaseExpired(row.dueTime)" (click)="openDialog(row)"></tr>
+        'red': isLeaseExpired(row.dueTime) && !row.returned,
+        'green':row.returned }" [hidden]="row.returned && hideFinishedLeases || showOnlyExpired && (!isLeaseExpired(row.dueTime) || row.returned)" (click)="openDialog(row)"></tr>
 
   </table>
   <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"> </mat-paginator>
