@@ -6,21 +6,25 @@
 
   <div class='media-center'>
     <h2>{{book.title}}</h2>
-    <div><b>Author:</b> <span class="graycolor"> {{book.author.name}}</span></div>
+    <div class='author-available-container'>
+      <div> <b>Author:</b> <span class="graycolor"> {{book.author.name}}</span></div>
+      <div> <b>Status: </b> <span id='is-available'
+          [ngClass]="{'success': book.available,'failed': !book.available}">{{book.available ? 'Available': 'Not available..'}}</span>
+      </div>
+    </div>
+
     <p>
       {{book.summary}}
     </p>
     <div class='buttons'>
       <button mat-button *ngIf="book.available" (click)="openDialog(book)">LEASE</button>
       <button mat-button *ngIf="!book.available" class='disabled'>LEASE</button>
-
-      <span id='is-available'
-        [ngClass]="{'success': book.available,'failed': !book.available}">{{book.available ? 'Available': 'Not available..'}}</span>
+      <div class='lease-info'>
+          <p *ngIf='statusLeasing' [ngClass]="{'success': leaseSuccessful,'failed':!leaseSuccessful}">{{statusLeasing}}</p>
+        </div>
       <button mat-button (click)='openShareDialog()'>SHARE</button>
     </div>
-    <div class='lease-info'>
-      <p *ngIf='statusLeasing' [ngClass]="{'success': leaseSuccessful,'failed':!leaseSuccessful}">{{statusLeasing}}</p>
-    </div>
+
   </div>
   <!-- If fetching similarBooks didnt fail and there similar books >0 then display -->
   <div class='media-right' *ngIf='!errorSimilarFetching && similarBooks'>

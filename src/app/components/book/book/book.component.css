@@ -3,7 +3,11 @@
   flex-direction: row;
   padding: 40px 150px 40px 150px;
 }
-
+.author-available-container{
+  display:flex;
+  justify-content:space-between;
+  padding-right:7px;
+}
 .media-center {
   padding-left: 35px;
   display: flex;

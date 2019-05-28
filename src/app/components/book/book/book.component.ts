@@ -65,7 +65,13 @@ export class BookComponent implements OnInit {
                     this.leaseSuccessful = true;
                 },
                 error => {
-                    this.statusLeasing = 'Error happened while trying to lease this book, please refresh and try again..';
+                    if(error.status == 401)
+                    {
+                        this.statusLeasing='You must be logged in to lease a book!'
+                    }
+                    else{
+                        this.statusLeasing='Error leasing, refresh and try again!'
+                    }
                     this.leaseSuccessful = false;
                     console.error('Error details:', error);
                 })
